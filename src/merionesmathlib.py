@@ -12,3 +12,13 @@
 # @return Sum of two numbers a and b
 def Add(a,b):
     return a + b
+
+##
+# @brief Difference of two numbers
+#
+# @param a First number, minor
+# @param b Second number, minority
+#
+# @return Difference of two numbers a and b
+def Sub(a,b):
+    return a - b
