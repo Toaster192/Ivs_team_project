@@ -121,6 +121,33 @@ class MerioneslibTestDiv(unittest.testcase):
         self.assertEqual(self.math.div(-10, 2.5), -4)
         self.assertAlmostEqual(self.math.div(-10, -3), 3,3333, 4)
 
+class MerioneslibTestPow(unittest.testcase):
+    def setUp(self):
+        self.math = Merioneslib()
+
+    def test_pow_power_of_zero(self):
+        self.assertEqual(self.math.pow(185, 0), 1)
+
+    def test_pow_positive_even(self):
+        self.assertEqual(self.math.pow(-10, 2), 100)
+        self.assertEqual(self.math.pow(5, 4), 625)
+        self.assertEqual(self.math.pow(0, 2), 0)
+
+    def test_pow_positive_odd(self):
+        self.assertEqual(self.math.pow(-1, 3), -1)
+        self.assertEqual(self.math.pow(2, 5), 32)
+        self.assertEqual(self.math.pow(-10, 1), -10)
+
+    def test_pow_negative(self):
+        self.assertEqual(self.math.pow(2, -1), 0.5)
+        self.assertEqual(self.math.pow(4, -2), 0,0625)
+        self.assertEqual(self.math.pow(1, -10), 1)
+
+    def test_pow_decimal(self):
+        self.assertEqual(self.math.pow(4.875, 3.25), 172.1542)
+        self.assertEqual(self.math.pow(-25, 2.5), 3125)
+        self.assertEqual(self.math.pow(4, -0.5), 0.5)
+
 
 if __name__ == '__main__':
     unittest.main()
