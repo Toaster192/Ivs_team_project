@@ -90,3 +90,37 @@ class MerioneslibTestMul(unittest.testcase):
         self.assertEqual(self.math.mul(1.5, 3.25), 4.875)
         self.assertEqual(self.math.mul(-1.5, 3.25), -4.875)
         self.assertEqual(self.math.mul(-1.5, -3.25), 4.875)
+
+
+class MerioneslibTestDiv(unittest.testcase):
+    def setUp(self):
+        self.math = Merioneslib()
+
+    def test_div_division_by_zero(self):
+        self.assertRaises(self.math.div(42,0))
+
+    def test_div_positive(self):
+        self.assertEqual(self.math.div(10, 2), 5)
+        self.assertEqual(self.math.div(42, 21), 2)
+        self.assertEqual(self.math.div(0, 2), 0)
+        self.assertEqual(self.math.div(1024, 1024), 1)
+
+    def test_div_negative(self):
+        self.assertEqual(self.math.div(-1, -1), 1)
+        self.assertEqual(self.math.div(0, -5), 0)
+        self.assertEqual(self.math.div(-10, -2), 5)
+        self.assertEqual(self.math.div(-42, -21), 2)
+
+    def test_div_positive_negative(self):
+        self.assertEqual(self.math.div(-10, 2), -5)
+        self.assertEqual(self.math.div(42, -21), -2)
+        self.assertEqual(self.math.div(-7, 7), -1)
+
+    def test_div_positive_decimal(self):
+        self.assertEqual(self.math.div(4.875, 3.25), 1.5)
+        self.assertEqual(self.math.div(-10, 2.5), -4)
+        self.assertAlmostEqual(self.math.div(-10, -3), 3,3333, 4)
+
+
+if __name__ == '__main__':
+    unittest.main()
