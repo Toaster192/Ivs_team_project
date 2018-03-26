@@ -1,0 +1,138 @@
+MERIONES - xchlup08, xkinst01, xsaran02, xwysog00
+IVS - Projekt 2 - Týmová spolupráce - Kalkulačka
+
+Datum: 19.3.2018
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+TERMÍNY:
+19.3.    repozitář, bitbucket, trello
+20.3.    plán
+27.3.    testy, základní operace, makefile
+3.4.     funkce navíc povinné i nepovinné
+10.4.    GUI, vzhled, ovládání, profilling
+17.4.    dokumentace, nápověda, manuál, instalátor/odinstalátor
+24.4.    finální produkt, mockup, ladění detailů
+30.4.    problémy
+11.5.    instalace (zúčastní se všichni členové týmu)
+od 7.5.  obhajoby (=prezentace)
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+PŘIDĚLENÍ ÚKOLŮ:
+Testování  -------------------------------------  xwysog00
+- sada testů vytvořená před samotným programováním
+- testy jsou tvořeny na základě domluvených vlastností kalkulačky
+
+Kontrola dokumentace  --------------------------  xwysog00
+- kontrola a oprava formátu, jazykové správnosti, celistvosti dokumentace   
+
+Kontrola PEP  ----------------------------------  xkinst01
+- kontrola a oprava kódu podle norem PEP
+
+Průběžná kontrola funkčnosti  ------------------  xsaran02
+- kontrola funkčnosti, spustitelnosti kódu a jeho částí s
+využitím testů a debuggeru
+- v případě nalezených chyb je nefunkční část předána zpět odpovědnému
+členu týmu na předělání   
+
+Dodržování termínů, kontrola průběžné práce  ---  xchlup08
+- kontrola, zda odpovědní členové týmu plní své úkoly včas
+- přidávání informací a upozornění o blížících se termínech pro odpovědné
+členy týmu
+
+Správa účtu na bitbucket  ----------------------  xchlup08
+- kontrola a korekce obsahu repozitáře
+- správa přístupu členů týmu (a učitelů) k repozitáři
+
+Správa plánování  ------------------------------  xkinst01
+- správa a kontrola plnění úkolů na Trello
+
+Makefile  --------------------------------------  xsaran02
+- vytvoření makefile souboru
+
+Jednoduché aritmetické operace  ----------------  xsaran02
+- naprogramování aritmetických operací +,-,*,/ do matematické knihovny
+- zdokumentování kódu
+
+Funkce navíc povinné  --------------------------  xchlup08
+- naprogramování operací faktoriál, mocnina s přirozeným exponentem,
+obecná odmocnina a logaritmus do matematické knihovny
+- zdokumentování kódu
+
+Funkce navíc nepovinné  ------------------------  xchlup08
+- naprogramování dalších případných operací do matematické knihovny
+- zatím je v plánu: převodník jednotek pro hmotnost, délku, čas, teplotní stupně
+- zdokumentování kódu
+
+Algoritmus pro závorky  ------------------------  xkinst01
+- naprogramování algoritmu pro vyhledávání závorek v zadaném výrazu a rozdělení 
+celkového výrazu pomocí závorek na podvýrazy
+- zdokumentování kódu
+
+Algoritmus pro prioritu aritmetických výrazů  --  xwysog00
+- naprogramování algoritmu pro vyhledávání operací podle priority
+(resp. násobení/dělení má přednost)
+- zdokumentování kódu
+
+Profilling  ------------------------------------  xkinst01
+- vytvoření programu pro výpočet směrodatné odchylky na základě funkcí z
+matematické knihovny
+- zjišťování, kde je třeba více optimalizovat a informovat o výsledcích
+ostatní členy týmu
+
+Vzhled (GUI) kalkulačky  -----------------------  xchlup08
+- vytvoření základního vzhledu kalkulačky (včetně tlačítek, displeje),
+grafické zpracování
+
+Ovládání kalkulačky (tlačítka, displej)  -------  xwysog00
+- naprogramování jednotlivých tlačítek a displeje kalkulačky
+
+Nápověda  --------------------------------------  xkinst01
+- vytvoření základní nápovědy spustitelné v kalkulačce s návodem k jejímu použití
+
+Manuál  ----------------------------------------  xsaran02
+- vytvoření kompletního programátorského a uživatelského manuálu včetně návodu,
+jak kalkulačku nainstalovat/odinstalovat
+
+Instalátor/odinstalátor   ----------------------  xwysog00
+- naprogramování instalátoru/odinstalátoru kalkulačky
+
+Prezentace  ------------------------------------  xsaran02
+- vytvoření prezentace určené k obhajobě týmového úkolu
+- každý člen týmu vytvoří vlastní část textu, kterou bude prezentovat,
+ale odpovědný člen týmu tyto texty zpracuje do vhodné celistvé prezentace
+
+Celkem 20 úkolů, každý člen týmu má 5 přidělených úkolů.
+
+Pozn.: Mockup zde není uvedený z toho důvodu, že se na něm budou podílet
+všichni členové týmu prací na jednotlivých úkolech.
+Pozn.: Pokud bude člen týmu se svou části hotový, předá ji na kontrolu
+dokumentace, funkčnosti a PEP. Pokud proběhne kontrola v pořádku, může nabídnout
+pomoc při řešení jiné části úkolu nebo ho vedoucí týmu přiřadí k dalšímu úkolu.
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+KOMUNIKAČNÍ KANÁLY: Discord
+Discord slouží jako komunikační kanál ve formě chatu/fóra. Název týmového
+diskuzního kanálu je Meriones. Diskuzní podkanály jsou rozděleny podle funkce
+na části: obecný chat, design, program, dokumenty, rozdělení úkolů a termíny.
+Každý podkanál má své správce, kteří jeho obsah pravidelně aktualizují a 
+upravují jeho obsah podle vývoje projektu. Discord umožňuje i skupinové hovory.
+Mimo discord se bude tým taky pravidelně scházet osobně ve školní knihovně.
+
+Vedoucí týmu: xsaran02 (Ivana Saranová)
+Zastupuje tým při komunikaci s vyučujícími, spravuje hlavní komunikační kanál a
+dohlíží na hladký průběh vývoje projektu, spolupráci a rovnoměrně rozděluje
+úkoly mezi členy týmu.
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+SYSTÉM PRO SPRÁVU VERZÍ A HOSTING: Bitbucket
++ jak do repozitáře budou moct nahlížet vyučující: Bitbucket repozitář
+(team meriones) je sdílen pomocí e-mailu: ivs.kontrola@gmail.com
+
