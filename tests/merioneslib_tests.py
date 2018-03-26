@@ -34,3 +34,31 @@ class MerioneslibTestAdd(unittest.testcase):
         self.assertEqual(self.math.add(2.25, 4.5), 6.75)
         self.assertEqual(self.math.add(-2.25, 4.5), 2.25)
         self.assertEqual(self.math.add(-2.25, -4.5), -6.75)
+
+
+class MerioneslibTestSub(unittest.testcase):
+    def setUp(self):
+        self.math = Merioneslib()
+
+    def test_sub_positive(self):
+        self.assertEqual(self.math.sub(1, 2), -1)
+        self.assertEqual(self.math.sub(0, 0), 0)
+        self.assertEqual(self.math.sub(0, 2), -2)
+        self.assertEqual(self.math.sub(72, 58), 14)
+
+    def test_sub_negative(self):
+        self.assertEqual(self.math.sub(-1, -1), 0)
+        self.assertEqual(self.math.sub(0, -5), 5)
+        self.assertEqual(self.math.sub(-5, 0), -5)
+        self.assertEqual(self.math.sub(-58, -72), 14)
+
+    def test_sub_positive_negative(self):
+        self.assertEqual(self.math.sub(-5, 2), -7)
+        self.assertEqual(self.math.sub(5, -7), 7)
+        self.assertEqual(self.math.sub(-7, 8), -15)
+        self.assertEqual(self.math.sub(7, 8), -1)
+
+    def test_sub_decimal(self):
+        self.assertEqual(self.math.sub(2.25, 4.5), -2.25)
+        self.assertEqual(self.math.sub(-2.25, 4.5), -6.75)
+        self.assertEqual(self.math.sub(-2.25, -4.5), 2.25)
