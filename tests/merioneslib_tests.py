@@ -144,9 +144,38 @@ class MerioneslibTestPow(unittest.testcase):
         self.assertEqual(self.math.pow(1, -10), 1)
 
     def test_pow_decimal(self):
-        self.assertEqual(self.math.pow(4.875, 3.25), 172.1542)
+        self.assertEqual(self.math.pow(1, 3.25), 1)
         self.assertEqual(self.math.pow(-25, 2.5), 3125)
         self.assertEqual(self.math.pow(4, -0.5), 0.5)
+
+
+class MerioneslibTestRoot(unittest.testcase):
+    def setUp(self):
+        self.math = Merioneslib()
+
+    def test_root_even_root_of_negative(self):
+        self.assertRaises(self.math.root(-5,4))
+        self.assertRaises(self.math.root(-1,2))
+
+    def test_root_of_positive(self):
+        self.assertEqual(self.math.root(100, 2), 10)
+        self.assertEqual(self.math.root(9, 3), 3)
+        self.assertEqual(self.math.root(0, 2), 0)
+
+    def test_root_odd_root_of_negative(self):
+        self.assertEqual(self.math.root(-1, 3), -1)
+        self.assertEqual(self.math.root(-512, 9), -2)
+        self.assertEqual(self.math.root(-10, 1), -10)
+
+    def test_root_negative_root(self):
+        self.assertEqual(self.math.root(2, -1), 0.5)
+        self.assertEqual(self.math.root(4, -2), 0.5)
+        self.assertEqual(self.math.root(1, -10), 1)
+
+    def test_root_decimal(self):
+        self.assertEqual(self.math.root(4.875, 3.25), 172.1542)
+        self.assertEqual(self.math.root(3125, 2.5), 25)
+        self.assertEqual(self.math.root(0.5, -0.5), 4)
 
 
 if __name__ == '__main__':
