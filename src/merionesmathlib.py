@@ -31,4 +31,18 @@ def Sub(a,b):
 #
 # @return Product of two numbers a and b
 def Mul(a,b):
-    return a*b
+    return a * b
+
+##
+# @brief Quotient of two numbers
+#
+# @param a First number, dividend
+# @param b Second number, divisor
+#
+# @return Quotient of two numbers a and b or "Ma ERROR" in case
+# the first number is divided by zero
+def Div(a,b):
+    if(b == 0):
+        print("Error - division by zero!")
+        raise ValueError('Ma ERROR')
+    return a / b
