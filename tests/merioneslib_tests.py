@@ -97,7 +97,8 @@ class MerioneslibTestDiv(unittest.testcase):
         self.math = Merioneslib()
 
     def test_div_division_by_zero(self):
-        self.assertRaises(self.math.div(42,0))
+        with self.assertRaises(ValueError):
+            self.math.div(10,0)
 
     def test_div_positive(self):
         self.assertEqual(self.math.div(10, 2), 5)
