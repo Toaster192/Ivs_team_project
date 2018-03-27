@@ -54,7 +54,7 @@ class MerioneslibTestSub(unittest.testcase):
 
     def test_sub_positive_negative(self):
         self.assertEqual(self.math.sub(-5, 2), -7)
-        self.assertEqual(self.math.sub(5, -7), 7)
+        self.assertEqual(self.math.sub(5, -7), 12)
         self.assertEqual(self.math.sub(-7, 8), -15)
         self.assertEqual(self.math.sub(7, 8), -1)
 
@@ -75,13 +75,13 @@ class MerioneslibTestMul(unittest.testcase):
         self.assertEqual(self.math.mul(72, 58), 4176)
 
     def test_mul_negative(self):
-        self.assertEqual(self.math.mul(-1, -1), 0)
+        self.assertEqual(self.math.mul(-1, -1), 1)
         self.assertEqual(self.math.mul(0, -5), 5)
         self.assertEqual(self.math.mul(-5, 0), -5)
         self.assertEqual(self.math.mul(-58, -72), 14)
 
     def test_mul_positive_negative(self):
-        self.assertEqual(self.math.mul(-5, 2), -7)
+        self.assertEqual(self.math.mul(-5, 2), -10)
         self.assertEqual(self.math.mul(5, -7), 7)
         self.assertEqual(self.math.mul(-7, 8), -15)
         self.assertEqual(self.math.mul(7, 8), -1)
