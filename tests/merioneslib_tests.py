@@ -194,5 +194,34 @@ class MerioneslibTestRoot(unittest.testcase):
         self.assertEqual(self.math.root(0.5, -0.5), 4)
 
 
+# Tests the factorial function (!)
+class MerioneslibTestFactorial(unittest.testcase):
+    def setUp(self):
+        self.math = Merioneslib()
+
+    # Factorial of negative number is forbidden in math
+    def test_factorial_negative(self):
+        with self.assertRaises(ValueError):
+            self.math.factorial(-5)
+        with self.assertRaises(ValueError):
+            self.math.factorial(-1)
+
+    # Factorial of decimal number is usually forbidden in math
+    def test_factorial_decimal(self):
+        with self.assertRaises(ValueError):
+            self.math.factorial(1.5)
+        with self.assertRaises(ValueError):
+            self.math.factorial(-2.89)
+
+    # Factorial of zero is 1 by definition
+    def test_factorial_of_zero(self):
+        self.assertEqual(self.math.factorial(0), 1)
+
+    def test_factorial_of_positive(self):
+        self.assertEqual(self.math.factorial(1), 1)
+        self.assertEqual(self.math.factorial(5), 120)
+        self.assertEqual(self.math.factorial(10), 3628800)
+
+
 if __name__ == '__main__':
     unittest.main()
