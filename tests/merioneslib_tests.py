@@ -7,6 +7,7 @@ import unittest
 
 from src.merionesmathlib import Merioneslib
 
+
 # To run tests, go to the parent directory and
 # type "python3 -m tests.merioneslib_tests.py"
 
@@ -151,7 +152,7 @@ class MerioneslibTestPow(unittest.testcase):
 
     def test_pow_negative(self):
         self.assertEqual(self.math.pow(2, -1), 0.5)
-        self.assertEqual(self.math.pow(4, -2), 0,0625)
+        self.assertEqual(self.math.pow(4, -2), 0.0625)
         self.assertEqual(self.math.pow(1, -10), 1)
 
     def test_pow_decimal(self):
