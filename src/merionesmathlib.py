@@ -18,7 +18,7 @@ class MerionesLib:
 # @param b Second number to be added
 #
 # @return Sum of two numbers a and b
-    def Add(a, b):
+    def add(a, b):
         return a + b
 
 
@@ -29,7 +29,7 @@ class MerionesLib:
 # @param b Second number, minority
 #
 # @return Difference of two numbers a and b
-    def Sub(a, b):
+    def sub(a, b):
         return a - b
 
 
@@ -40,7 +40,7 @@ class MerionesLib:
 # @param b Second number to be multiplied
 #
 # @return Product of two numbers a and b
-    def Mul(a, b):
+    def mul(a, b):
         return a * b
 
 
@@ -52,7 +52,7 @@ class MerionesLib:
 #
 # @return Quotient of two numbers a and b 
 # @exceptions Ma ERROR In case the second number is zero, function will throw error Ma ERROR
-    def Div(a, b):
+    def div(a, b):
         if not b:
             print("Error - division by zero!")
             raise ValueError('Ma ERROR')
