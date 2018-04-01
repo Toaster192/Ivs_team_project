@@ -168,10 +168,10 @@ class MerioneslibTestRoot(unittest.testcase):
     # Even root of negative number is usually forbidden in math
     def test_root_even_root_of_negative(self):
         with self.assertRaises(ValueError):
-            self.math.root(-5, 4)
+            self.math.root(4, -4)
 
         with self.assertRaises(ValueError):
-            self.math.root(-1, 2)
+            self.math.root(10, -2)
 
     def test_root_of_positive(self):
         self.assertEqual(self.math.root(100, 2), 10)
