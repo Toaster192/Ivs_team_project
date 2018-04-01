@@ -2,7 +2,13 @@
 # @package merioneslib
 #  Merioneslib is a mathematical library for Meriones calculator.
 #
-#  More details...
+#  This mathematical library consists of basic mathematical operations
+#  such as sum, difference, multiplication or division, advanced mathematical
+#  operations such as power, ..., logarithm,.... **DOPLNIT**
+
+##
+# @brief Class for Meriones Math Library
+class MerionesLib:
 
 
 ##
@@ -12,8 +18,8 @@
 # @param b Second number to be added
 #
 # @return Sum of two numbers a and b
-def Add(a, b):
-    return a + b
+    def Add(a, b):
+        return a + b
 
 
 ##
@@ -23,8 +29,8 @@ def Add(a, b):
 # @param b Second number, minority
 #
 # @return Difference of two numbers a and b
-def Sub(a, b):
-    return a - b
+    def Sub(a, b):
+        return a - b
 
 
 ##
@@ -34,8 +40,8 @@ def Sub(a, b):
 # @param b Second number to be multiplied
 #
 # @return Product of two numbers a and b
-def Mul(a, b):
-    return a * b
+    def Mul(a, b):
+        return a * b
 
 
 ##
@@ -46,14 +52,14 @@ def Mul(a, b):
 #
 # @return Quotient of two numbers a and b 
 # @exceptions Ma ERROR In case the second number is zero, function will throw error Ma ERROR
-def Div(a, b):
-    if not b:
-        print("Error - division by zero!")
-        raise ValueError('Ma ERROR')
-    if a % b == 0:
-	return a / b
-    a = (float)a
-    return a / b
+    def Div(a, b):
+        if not b:
+            print("Error - division by zero!")
+            raise ValueError('Ma ERROR')
+        if a % b == 0:
+	    return a / b
+        a = (float)a
+        return a / b
 
 
 ''' Alpha version
