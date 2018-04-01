@@ -5,8 +5,10 @@
 
 import unittest
 
-from src.merioneslib import Merioneslib
+from src.merionesmathlib import Merioneslib
 
+# To run tests, go to the parent directory and
+# type "python3 -m tests.merioneslib_tests.py"
 
 class MerioneslibTestAdd(unittest.testcase):
     def setUp(self):
