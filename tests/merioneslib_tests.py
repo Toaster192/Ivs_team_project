@@ -10,6 +10,7 @@ from src.merionesmathlib import Merioneslib
 # To run tests, go to the parent directory and
 # type "python3 -m tests.merioneslib_tests.py"
 
+# Tests the add function (+)
 class MerioneslibTestAdd(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
@@ -38,6 +39,7 @@ class MerioneslibTestAdd(unittest.testcase):
         self.assertEqual(self.math.add(-2.25, -4.5), -6.75)
 
 
+# Tests the sub function (-)
 class MerioneslibTestSub(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
@@ -66,6 +68,7 @@ class MerioneslibTestSub(unittest.testcase):
         self.assertEqual(self.math.sub(-2.25, -4.5), 2.25)
 
 
+# Tests the mul function (-)
 class MerioneslibTestMul(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
@@ -94,10 +97,12 @@ class MerioneslibTestMul(unittest.testcase):
         self.assertEqual(self.math.mul(-1.5, -3.25), 4.875)
 
 
+# Tests the div function (/)
 class MerioneslibTestDiv(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
 
+    # Division by zero is usually forbidden in math
     def test_div_division_by_zero(self):
         with self.assertRaises(ValueError):
             self.math.div(10,0)
@@ -124,10 +129,13 @@ class MerioneslibTestDiv(unittest.testcase):
         self.assertEqual(self.math.div(-10, 2.5), -4)
         self.assertAlmostEqual(self.math.div(-10, -3), 3,3333, 4)
 
+
+# Tests the pow function (^)
 class MerioneslibTestPow(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
 
+    # Anything to the power of zero is always 1
     def test_pow_power_of_zero(self):
         self.assertEqual(self.math.pow(185, 0), 1)
 
@@ -152,10 +160,12 @@ class MerioneslibTestPow(unittest.testcase):
         self.assertEqual(self.math.pow(4, -0.5), 0.5)
 
 
+# Tests the root function (√)
 class MerioneslibTestRoot(unittest.testcase):
     def setUp(self):
         self.math = Merioneslib()
 
+    # Even root of negative number is usually forbidden in math
     def test_root_even_root_of_negative(self):
         self.assertRaises(self.math.root(-5,4))
         self.assertRaises(self.math.root(-1,2))
