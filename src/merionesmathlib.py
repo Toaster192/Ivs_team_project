@@ -58,7 +58,7 @@ class MerionesLib:
             raise ValueError('Ma ERROR')
         if a % b == 0:
 	        return a / b
-        a = (float)a
+        a = float(a)
         return a / b
 
 
