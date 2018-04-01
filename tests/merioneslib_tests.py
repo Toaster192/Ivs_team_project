@@ -1,20 +1,20 @@
-# merioneslib_tests.py
+# MerionesLib_tests.py
 # Projekt IVS II.
 # Autor: Jaromír Wysoglad, xwysog00
 # Datum: 2018-03-26
 
 import unittest
 
-from src.merionesmathlib import Merioneslib
+from src.merionesmathlib import MerionesLib
 
 
 # To run tests, go to the parent directory and
 # type "python3 -m tests.merioneslib_tests.py"
 
 # Tests the add function (+)
-class MerioneslibTestAdd(unittest.testcase):
+class MerionesLibTestAdd(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     def test_add_positive(self):
         self.assertEqual(self.math.add(1, 2), 3)
@@ -41,9 +41,9 @@ class MerioneslibTestAdd(unittest.testcase):
 
 
 # Tests the sub function (-)
-class MerioneslibTestSub(unittest.testcase):
+class MerionesLibTestSub(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     def test_sub_positive(self):
         self.assertEqual(self.math.sub(1, 2), -1)
@@ -69,10 +69,10 @@ class MerioneslibTestSub(unittest.testcase):
         self.assertEqual(self.math.sub(-2.25, -4.5), 2.25)
 
 
-# Tests the mul function (-)
-class MerioneslibTestMul(unittest.testcase):
+# Tests the mul function (*)
+class MerionesLibTestMul(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     def test_mul_positive(self):
         self.assertEqual(self.math.mul(1, 2), 2)
@@ -82,15 +82,15 @@ class MerioneslibTestMul(unittest.testcase):
 
     def test_mul_negative(self):
         self.assertEqual(self.math.mul(-1, -1), 1)
-        self.assertEqual(self.math.mul(0, -5), 5)
-        self.assertEqual(self.math.mul(-5, 0), -5)
-        self.assertEqual(self.math.mul(-58, -72), 14)
+        self.assertEqual(self.math.mul(0, -5), 0)
+        self.assertEqual(self.math.mul(-5, 0), 0)
+        self.assertEqual(self.math.mul(-58, -72), 4176)
 
     def test_mul_positive_negative(self):
         self.assertEqual(self.math.mul(-5, 2), -10)
-        self.assertEqual(self.math.mul(5, -7), 7)
-        self.assertEqual(self.math.mul(-7, 8), -15)
-        self.assertEqual(self.math.mul(7, 8), -1)
+        self.assertEqual(self.math.mul(5, -7), -35)
+        self.assertEqual(self.math.mul(-7, 8), -56)
+        self.assertEqual(self.math.mul(7, 8), 56)
 
     def test_mul_positive_decimal(self):
         self.assertEqual(self.math.mul(1.5, 3.25), 4.875)
@@ -99,9 +99,9 @@ class MerioneslibTestMul(unittest.testcase):
 
 
 # Tests the div function (/)
-class MerioneslibTestDiv(unittest.testcase):
+class MerionesLibTestDiv(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     # Division by zero is usually forbidden in math
     def test_div_division_by_zero(self):
@@ -125,16 +125,16 @@ class MerioneslibTestDiv(unittest.testcase):
         self.assertEqual(self.math.div(42, -21), -2)
         self.assertEqual(self.math.div(-7, 7), -1)
 
-    def test_div_positive_decimal(self):
+    def test_div_decimal(self):
         self.assertEqual(self.math.div(4.875, 3.25), 1.5)
         self.assertEqual(self.math.div(-10, 2.5), -4)
-        self.assertAlmostEqual(self.math.div(-10, -3), 3,3333, 4)
+        self.assertAlmostEqual(self.math.div(-10, -3), 3.3333, 4)
 
 
 # Tests the pow function (^)
-class MerioneslibTestPow(unittest.testcase):
+class MerionesLibTestPow(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     # Anything to the power of zero is always 1
     def test_pow_power_of_zero(self):
@@ -162,9 +162,9 @@ class MerioneslibTestPow(unittest.testcase):
 
 
 # Tests the root function (√)
-class MerioneslibTestRoot(unittest.testcase):
+class MerionesLibTestRoot(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     # Even root of negative number is usually forbidden in math
     def test_root_even_root_of_negative(self):
@@ -196,9 +196,9 @@ class MerioneslibTestRoot(unittest.testcase):
 
 
 # Tests the factorial function (!)
-class MerioneslibTestFactorial(unittest.testcase):
+class MerionesLibTestFactorial(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     # Factorial of negative number is forbidden in math
     def test_factorial_negative(self):
@@ -225,9 +225,9 @@ class MerioneslibTestFactorial(unittest.testcase):
 
 
 # Tests the solve_expression function
-class MerioneslibTestSolveExpression(unittest.testcase):
+class MerionesLibTestSolveExpression(unittest.TestCase):
     def setUp(self):
-        self.math = Merioneslib()
+        self.math = MerionesLib()
 
     def test_solve_expression_addition(self):
         self.assertEqual(self.math.solve_expression("5+8"), 13)
