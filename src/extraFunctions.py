@@ -16,7 +16,7 @@ def convert_weight(self, x, units):
         return x * 0.001
 
 
-def convert_length(self, x,units):
+def convert_length(self, x, units):
     """
     Method converts number x to units given by parameter units
 
