@@ -44,12 +44,15 @@ def Mul(a, b):
 # @param a First number, dividend
 # @param b Second number, divisor
 #
-# @return Quotient of two numbers a and b or "Ma ERROR" in case
-# the first number is divided by zero
+# @return Quotient of two numbers a and b 
+# @exceptions Ma ERROR In case the second number is zero, function will throw error Ma ERROR
 def Div(a, b):
     if not b:
         print("Error - division by zero!")
         raise ValueError('Ma ERROR')
+    if a % b == 0:
+	return a / b
+    a = (float)a
     return a / b
 
 
