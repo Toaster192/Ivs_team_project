@@ -343,5 +343,32 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("2!*8+1-ln0")
 
 
+# Tests the convert_weight function
+class MerionesLibTestConvertWeight(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_convert_to_mg(self):
+        self.assertEqual(self.math.convert_weight(10, "mg"), 10000000)
+        self.assertEqual(self.math.convert_weight(0, "mg"), 0)
+        self.assertEqual(self.math.convert_weight(2.5, "mg"), 2500000)
+
+    def test_convert_to_g(self):
+        self.assertEqual(self.math.convert_weight(10, "g"), 10000)
+        self.assertEqual(self.math.convert_weight(0, "g"), 0)
+        self.assertEqual(self.math.convert_weight(2.5, "g"), 2500)
+
+    def test_convert_to_lb(self):
+        self.assertAlmostEqual(self.math.convert_weight(10, "lb"), 22.0462, 4)
+        self.assertEqual(self.math.convert_weight(0, "lb"), 0)
+        self.assertAlmostEqual(self.math.convert_weight(2.5, "lb"), 5.5115, 4)
+
+    def test_convert_to_t(self):
+        self.assertEqual(self.math.convert_weight(10, "t"), 0.01)
+        self.assertEqual(self.math.convert_weight(0, "t"), 0)
+        self.assertEqual(self.math.convert_weight(2.5, "t"), 0.0025)
+
+
+
 if __name__ == '__main__':
     unittest.main()
