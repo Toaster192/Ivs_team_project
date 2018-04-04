@@ -224,6 +224,29 @@ class MerionesLibTestFactorial(unittest.TestCase):
         self.assertEqual(self.math.factorial(10), 3628800)
 
 
+# Tests the natural logarithm function (ln)
+class MerionesLibTestLn(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    # Natural logarithm of negative number and zero is forbidden in math
+    def test_ln_negative_zero(self):
+        with self.assertRaises(ValueError):
+            self.math.ln(-5)
+        with self.assertRaises(ValueError):
+            self.math.ln(0)
+
+    # Natural logarithm of one is zero
+    def test_ln_one(self):
+        self.assertEqual(self.math.ln(1), 0)
+
+    def test_ln_of_positive(self):
+        self.assertAlmostEqual(self.math.ln(0.5), -0.693147, 6)
+        self.assertAlmostEqual(self.math.ln(2), 0.693147, 6)
+        self.assertAlmostEqual(self.math.ln(0.1), -2.302585, 6)
+        self.assertAlmostEqual(self.math.ln(10), 2.302585, 6)
+
+
 # Tests the solve_expression function
 class MerionesLibTestSolveExpression(unittest.TestCase):
     def setUp(self):
@@ -299,7 +322,7 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
         self.assertEqual(self.math.solve_expression("5^2+10*2"), "45")
         self.assertEqual(self.math.solve_expression("2!*8+1"), "17")
         self.assertEqual(self.math.solve_expression("1*5/5+1-1*3/3^1"), "1")
-        
+
         with self.assertRaises(ValueError):
             self.math.solve_expression("2!*8+1/0")
         with self.assertRaises(ValueError):
