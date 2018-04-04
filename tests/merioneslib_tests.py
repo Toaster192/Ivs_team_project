@@ -343,6 +343,37 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("2!*8+1-ln0")
 
 
+# Tests the parse_parentheses function
+class MerionesLibTestParseParentheses(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_parse_parentheses(self):
+        self.assertEqual(self.math.parse_parentheses("(5+8)*2"), "26")
+        self.assertEqual(self.math.parse_parentheses("-(10+19)"), "-9")
+        self.assertEqual(self.math.parse_parentheses("(1+2)!"), "6")
+        self.assertEqual(self.math.parse_parentheses("((1+2)*(1-2))*3"), "-9")
+        self.assertEqual(self.math.parse_parentheses("(((((9+1))))/2)^(((1+2)*2)/2)"), "125")
+        self.assertEqual(self.math.parse_parentheses("ln(1)"), "0")
+
+    def test_parse_parentheses_forbidden_expressions(self):
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("(1-2)!")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("ln(125*0)")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("(1+3)√(2*(3-4))")
+
+    #incomplete parentheses (different count of opening and closing parentheses) are forbidden
+    def test_parse_parentheses_incomplete_parentheses(self):
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("(1+5")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("1+5)")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("(2+5)*(1-8)/)+8-(2!)")
+
+
 # Tests the convert_weight function
 class MerionesLibTestConvertWeight(unittest.TestCase):
     def setUp(self):
