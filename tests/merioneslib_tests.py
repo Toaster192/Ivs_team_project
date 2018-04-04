@@ -395,6 +395,27 @@ class MerionesLibTestConvertLength(unittest.TestCase):
         self.assertEqual(self.math.convert_length(2.5, "mm"), 2500000)
 
 
+# Tests the convert_time function
+class MerionesLibTestConvertTime(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_convert_to_min(self):
+        self.assertEqual(self.math.convert_time(10, "min"), 600)
+        self.assertEqual(self.math.convert_time(0, "min"), 0)
+        self.assertEqual(self.math.convert_time(2.512, "min"), 150.72)
+
+    def test_convert_to_s(self):
+        self.assertEqual(self.math.convert_time(10, "s"), 36000)
+        self.assertEqual(self.math.convert_time(0, "s"), 0)
+        self.assertEqual(self.math.convert_time(2.512, "s"), 9043.2)
+
+    def test_convert_to_day(self):
+        self.assertAlmostEqual(self.math.convert_time(8, "day"), 0.3333, 4)
+        self.assertEqual(self.math.convert_time(0, "day"), 0)
+        self.assertEqual(self.math.convert_time(24, "day"), 1)
+        self.assertAlmostEqual(self.math.convert_time(245, "day"), 10.2083, 4)
+
 
 if __name__ == '__main__':
     unittest.main()
