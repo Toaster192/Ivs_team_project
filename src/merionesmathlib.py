@@ -97,6 +97,9 @@ class MerionesLib:
 
     @staticmethod
     def factorial(n):
+        if type(n) != int or n < 0:
+            print("Error - wrong factorial number format!")
+            raise ValueError('Ma ERROR')            
         if n == 0:
             return 1
         else:
