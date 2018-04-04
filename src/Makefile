@@ -1,8 +1,13 @@
 #Meriones Makefile
 
+.PHONY: all pack clean test doc run
+
 #prelozi projekt vcetne programu pro profilling
 all: 
 
+init:
+    pip install -r requirements.txt
+    
 #zabali projekt tak aby mohl byt odevzdan
 pack:
 
@@ -10,10 +15,12 @@ pack:
 clean:
 
 #spusti testy matematicke knihovny
-test:
+test: ../tests/merioneslib_tests.py
+    python3 merioneslib_tests.py
 
 #spusti generovani dokumentace
 doc:
 
 #spusti program
-run:
+run: main.py
+    python3 main.py
