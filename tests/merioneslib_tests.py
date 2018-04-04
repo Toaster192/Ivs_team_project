@@ -369,6 +369,32 @@ class MerionesLibTestConvertWeight(unittest.TestCase):
         self.assertEqual(self.math.convert_weight(2.5, "t"), 0.0025)
 
 
+# Tests the convert_length function
+class MerionesLibTestConvertLength(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_convert_to_m(self):
+        self.assertEqual(self.math.convert_length(10, "m"), 10000)
+        self.assertEqual(self.math.convert_length(0, "m"), 0)
+        self.assertEqual(self.math.convert_length(2.5, "m"), 2500)
+
+    def test_convert_to_cm(self):
+        self.assertEqual(self.math.convert_length(10, "cm"), 1000000)
+        self.assertEqual(self.math.convert_length(0, "cm"), 0)
+        self.assertEqual(self.math.convert_length(2.5, "cm"), 250000)
+
+    def test_convert_to_mi(self):
+        self.assertAlmostEqual(self.math.convert_length(10, "mi"), 6.2137, 4)
+        self.assertEqual(self.math.convert_length(0, "mi"), 0)
+        self.assertAlmostEqual(self.math.convert_length(2.5, "mi"), 1.5534, 4)
+
+    def test_convert_to_mm(self):
+        self.assertEqual(self.math.convert_length(10, "mm"), 10000000)
+        self.assertEqual(self.math.convert_length(0, "mm"), 0)
+        self.assertEqual(self.math.convert_length(2.5, "mm"), 2500000)
+
+
 
 if __name__ == '__main__':
     unittest.main()
