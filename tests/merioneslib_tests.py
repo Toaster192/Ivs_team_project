@@ -417,5 +417,23 @@ class MerionesLibTestConvertTime(unittest.TestCase):
         self.assertAlmostEqual(self.math.convert_time(245, "day"), 10.2083, 4)
 
 
+# Tests the convert_degrees function
+class MerionesLibTestConvertDegrees(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_convert_to_k(self):
+        self.assertEqual(self.math.convert_degrees(10, "K"), 283.15)
+        self.assertEqual(self.math.convert_degrees(0, "K"), 273.15)
+        self.assertEqual(self.math.convert_degrees(250, "K"), 523.15)
+        self.assertEqual(self.math.convert_degrees(-50, "K"), 223.15)
+
+    def test_convert_to_f(self):
+        self.assertEqual(self.math.convert_degrees(10, "F"), 50)
+        self.assertEqual(self.math.convert_degrees(0, "F"), 32)
+        self.assertEqual(self.math.convert_degrees(250, "F"), 482)
+        self.assertEqual(self.math.convert_degrees(-50, "F"), -58)
+
+
 if __name__ == '__main__':
     unittest.main()
