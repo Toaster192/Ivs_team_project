@@ -114,6 +114,9 @@ class MerionesLib:
 
     @staticmethod
     def power(base, exponent):
+        if type(exponent) != int or n == 0:
+            print("Error - exponent has to be integer!")
+            raise ValueError('Ma ERROR')
         return base**exponent
 
     ##
@@ -123,8 +126,11 @@ class MerionesLib:
     # @return square root of n
 
     @staticmethod
-    def root(n):
-        return n ** 0.5
+    def root(n, rvalue):
+        if type(exponent) != int or n == 0:
+            print("Error - exponent has to be integer!")
+            raise ValueError('Ma ERROR')
+        return n ** (1/rvalue)
 
     ##
     # Method calculates natural logarithm of x
