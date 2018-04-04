@@ -317,6 +317,18 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.math.solve_expression("-1!")
 
+    def test_solve_expression_ln(self):
+        self.assertEqual(self.math.solve_expression("ln1"), "0.0")
+        self.assertEqual(float(self.math.solve_expression("ln0.2")), -1.6094379, 7)
+        self.assertEqual(float(self.math.solve_expression("ln2")), 0.693147, 6)
+        self.assertEqual(float(self.math.solve_expression("ln0.2")), 3.7376696, 7)
+
+        # Natural logarithm of negative number or zero is forbidden in math
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("ln0")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("ln-42")
+
     def test_solve_expression_multiple_operations(self):
         self.assertEqual(self.math.solve_expression("5+8/2*10"), "45")
         self.assertEqual(self.math.solve_expression("5^2+10*2"), "45")
@@ -327,6 +339,8 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("2!*8+1/0")
         with self.assertRaises(ValueError):
             self.math.solve_expression("2!*8+1--1!")
+        with self.assertRaises(ValueError):
+            self.math.solve_expression("2!*8+1-ln0")
 
 
 if __name__ == '__main__':
