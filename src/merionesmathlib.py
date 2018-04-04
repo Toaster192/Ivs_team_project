@@ -92,8 +92,8 @@ class MerionesLib:
     ##
     # Method computes factorial of n
     #
-    # @param n: number of which factorial is calculated
-    # @return: factorial of number n
+    # @param n number of which factorial is calculated
+    # @return factorial of number n
 
     @staticmethod
     def factorial(n):
@@ -105,9 +105,9 @@ class MerionesLib:
     ##
     # Method calculates a base raised to a power
     #
-    # @param base: base of the power
-    # @param exponent: exponent determines how many times the base will be multiplied
-    # @return: base raised to the power
+    # @param base base of the power
+    # @param exponent exponent determines how many times the base will be multiplied
+    # @return base raised to the power
 
     @staticmethod
     def power(base, exponent):
@@ -116,8 +116,8 @@ class MerionesLib:
     ##
     # Method calculates square root of n
     #
-    # @param n: number of which square root will be calculate
-    # @return: square root of n
+    # @param n number of which square root will be calculate
+    # @return square root of n
 
     @staticmethod
     def root(n):
@@ -126,8 +126,8 @@ class MerionesLib:
     ##
     # Method calculates natural logarithm of x
     #
-    # @param x: number of which natural logarithm will be calculate
-    # @return: natural logarithm of x
+    # @param x number of which natural logarithm will be calculate
+    # @return natural logarithm of x
 
     @staticmethod
     def ln(x):
@@ -137,9 +137,9 @@ class MerionesLib:
     ##
     # Method converts number x to units given by parameter units
     #
-    # @param x: number of kilograms
-    # @param units: units that user requested
-    # @return: number x converted to given units
+    # @param x number of kilograms
+    # @param units units that user requested
+    # @return number x converted to given units
 
     @staticmethod
     def convert_weight(x, units):
@@ -155,9 +155,9 @@ class MerionesLib:
     ##
     # Method converts number x to units given by parameter units
     #
-    # @param x: number of kilometers
-    # @param units: units that user requested
-    # @return: number x converted to given units
+    # @param x number of kilometers
+    # @param units units that user requested
+    # @return number x converted to given units
 
     @staticmethod
     def convert_length(x, units):
@@ -173,9 +173,9 @@ class MerionesLib:
     ##
     # Method converts number x to units given by parameter units
     #
-    # @param x: number of hours
-    # @param units: units that user requested
-    # @return: number x converted to given units
+    # @param x number of hours
+    # @param units units that user requested
+    # @return number x converted to given units
 
     @staticmethod
     def convert_time(x, units):
@@ -189,9 +189,9 @@ class MerionesLib:
     ##
     # Method converts number x to units given by parameter units
     #
-    # @param x: number of celsius
-    # @param units: units that user requested
-    # @return: number x converted to given units
+    # @param x number of celsius
+    # @param units units that user requested
+    # @return number x converted to given units
 
     @staticmethod
     def convert_degrees(x, units):
