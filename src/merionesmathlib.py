@@ -6,8 +6,6 @@
 #  such as sum, difference, multiplication or division, advanced mathematical
 #  operations such as power, ..., logarithm,.... **DOPLNIT**
 
-from src.extraFunctions import *
-from src.mandatoryFunctions import *
 
 ##
 # @brief Class for Meriones Math Library
