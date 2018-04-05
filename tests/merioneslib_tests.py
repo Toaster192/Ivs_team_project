@@ -283,13 +283,11 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.math.solve_expression("-5/0")
 
-    def test_solve_expression_powerer(self):
+    def test_solve_expression_power(self):
         self.assertEqual(self.math.solve_expression("5^8"), "390625")
         self.assertEqual(self.math.solve_expression("-10^5"), "-100000")
         self.assertEqual(self.math.solve_expression("-10^4"), "10000")
-        self.assertEqual(self.math.solve_expression("5^-3"), "0.008")
         self.assertEqual(self.math.solve_expression("4.5^5"), "1845.28125")
-        self.assertEqual(self.math.solve_expression("9^0"), "1")
 
     def test_solve_expression_root(self):
         self.assertEqual(self.math.solve_expression("3√8"), "2")
@@ -363,7 +361,7 @@ class MerionesLibTestParseParentheses(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.math.solve_expression("(1+3)√(2*(3-4))")
 
-    #incomplete parentheses (different count of opening and closing parentheses) are forbidden
+    # incomplete parentheses (different count of opening and closing parentheses) are forbidden
     def test_parse_parentheses_incomplete_parentheses(self):
         with self.assertRaises(ValueError):
             self.math.solve_expression("(1+5")
