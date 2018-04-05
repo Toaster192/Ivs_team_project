@@ -114,7 +114,7 @@ class MerionesLib:
 
     @staticmethod
     def power(base, exponent):
-        if type(exponent) != int or n == 0:
+        if type(exponent) != int or n <= 0:
             print("Error - exponent has to be integer!")
             raise ValueError('Ma ERROR')
         return base**exponent
@@ -128,7 +128,7 @@ class MerionesLib:
     @staticmethod
     def root(n, rvalue):
         if type(exponent) != int or n == 0:
-            print("Error - exponent has to be integer!")
+            print("Error - root value has to be integer!")
             raise ValueError('Ma ERROR')
         return n ** (1/rvalue)
 
@@ -152,12 +152,15 @@ class MerionesLib:
 
     @staticmethod
     def convert_weight(x, units):
+        if units != 'mg' and units != 'g' and units != 'lb' and units != 't':
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
         if units == 'mg':
             return x * 1000 ** 2
         elif units == 'g':
             return x * 1000
         elif units == 'lb':
-            return x * 2.20
+            return x * 2.20462262
         elif units == 't':
             return x * 0.001
 
@@ -170,6 +173,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_length(x, units):
+        if units != 'm' and units != 'cm' and units != 'mm' and units != 'mi':
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
         if units == 'm':
             return x * 1000
         elif units == 'cm':
@@ -188,6 +194,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_time(x, units):
+        if units != 'min' and units != 's' and units != 'day':
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
         if units == 'min':
             return x * 60
         elif units == 's':
@@ -204,6 +213,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_degrees(x, units):
+        if units != 'K' and units != 'F':
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
         if units == 'K':
             return x + 273.15
         elif units == 'F':
