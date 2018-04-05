@@ -131,34 +131,34 @@ class MerionesLibTestDiv(unittest.TestCase):
         self.assertAlmostEqual(self.math.div(-10, -3), 3.3333, 4)
 
 
-# Tests the pow function (^)
-class MerionesLibTestPow(unittest.TestCase):
+# Tests the power function (^)
+class MerionesLibTestPower(unittest.TestCase):
     def setUp(self):
         self.math = MerionesLib()
 
-    # Anything to the power of zero is always 1
-    def test_pow_power_of_zero(self):
-        self.assertEqual(self.math.pow(185, 0), 1)
+    # Anything to the powerer of zero is always 1
+    def test_power_powerer_of_zero(self):
+        self.assertEqual(self.math.power(185, 0), 1)
 
-    def test_pow_positive_even(self):
-        self.assertEqual(self.math.pow(-10, 2), 100)
-        self.assertEqual(self.math.pow(5, 4), 625)
-        self.assertEqual(self.math.pow(0, 2), 0)
+    def test_power_positive_even(self):
+        self.assertEqual(self.math.power(-10, 2), 100)
+        self.assertEqual(self.math.power(5, 4), 625)
+        self.assertEqual(self.math.power(0, 2), 0)
 
-    def test_pow_positive_odd(self):
-        self.assertEqual(self.math.pow(-1, 3), -1)
-        self.assertEqual(self.math.pow(2, 5), 32)
-        self.assertEqual(self.math.pow(-10, 1), -10)
+    def test_power_positive_odd(self):
+        self.assertEqual(self.math.power(-1, 3), -1)
+        self.assertEqual(self.math.power(2, 5), 32)
+        self.assertEqual(self.math.power(-10, 1), -10)
 
-    def test_pow_negative(self):
-        self.assertEqual(self.math.pow(2, -1), 0.5)
-        self.assertEqual(self.math.pow(4, -2), 0.0625)
-        self.assertEqual(self.math.pow(1, -10), 1)
+    def test_power_negative(self):
+        self.assertEqual(self.math.power(2, -1), 0.5)
+        self.assertEqual(self.math.power(4, -2), 0.0625)
+        self.assertEqual(self.math.power(1, -10), 1)
 
-    def test_pow_decimal(self):
-        self.assertEqual(self.math.pow(1, 3.25), 1)
-        self.assertEqual(self.math.pow(-25, 2.5), 3125)
-        self.assertEqual(self.math.pow(4, -0.5), 0.5)
+    def test_power_decimal(self):
+        self.assertEqual(self.math.power(1, 3.25), 1)
+        self.assertEqual(self.math.power(-25, 2.5), 3125)
+        self.assertEqual(self.math.power(4, -0.5), 0.5)
 
 
 # Tests the root function (√)
@@ -284,7 +284,7 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.math.solve_expression("-5/0")
 
-    def test_solve_expression_power(self):
+    def test_solve_expression_powerer(self):
         self.assertEqual(self.math.solve_expression("5^8"), "390625")
         self.assertEqual(self.math.solve_expression("-10^5"), "-100000")
         self.assertEqual(self.math.solve_expression("-10^4"), "10000")
