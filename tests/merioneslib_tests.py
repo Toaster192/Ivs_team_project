@@ -463,5 +463,33 @@ class MerionesLibTestConvertDegrees(unittest.TestCase):
         self.assertEqual(self.math.convert_degrees(-50, "F"), -58)
 
 
+# Tests the parse_expression function
+class MerionesLibTestParseExpression(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+        self.operators = ["ln", "!", "√", "^", "*", "/", "+", "-"]
+
+    def test_parse_expression_unary_operation(self):
+        self.assertEqual(self.math.parse_expression("3!", self.operators), ["3", "!"])
+        self.assertEqual(self.math.parse_expression("-5", self.operators), ["-5"])
+        self.assertEqual(self.math.parse_expression("ln0.3", self.operators), ["ln", "0.3"])
+        self.assertEqual(self.math.parse_expression("√2", self.operators), ["√", "2"])
+
+    def test_parse_expression_binary_operation(self):
+        self.assertEqual(self.math.parse_expression("3+5", self.operators), ["3", "+", "5"])
+        self.assertEqual(self.math.parse_expression("3.2*8.5", self.operators), ["3.2", "*", "8.5"])
+        self.assertEqual(self.math.parse_expression("2-9", self.operators), ["2", "-", "9"])
+        self.assertEqual(self.math.parse_expression("5/8", self.operators), ["5", "/", "8"])
+        self.assertEqual(self.math.parse_expression("5--8", self.operators), ["5", "-", "-8"])
+        self.assertEqual(self.math.parse_expression("5+-8", self.operators), ["5", "+", "-8"])
+        self.assertEqual(self.math.parse_expression("5√8", self.operators), ["5", "√", "8"])
+        self.assertEqual(self.math.parse_expression("5^8", self.operators), ["5", "^", "8"])
+
+    def test_parse_expression_multiple_operations(self):
+        self.assertEqual(self.math.parse_expression("3!+8/1*5", self.operators), ["3", "!", "+", "8", "/", "1", "*", "5"])
+        self.assertEqual(self.math.parse_expression("1*-5+8/3.5", self.operators), ["1", "*", "-5", "+", "-", "/", "3.5"])
+        self.assertEqual(self.math.parse_expression("ln-0.3+9^7", self.operators), ["ln", "-0.3", "+", "9", "^", "7"])
+
+
 if __name__ == '__main__':
     unittest.main()
