@@ -136,10 +136,6 @@ class MerionesLibTestPower(unittest.TestCase):
     def setUp(self):
         self.math = MerionesLib()
 
-    # Anything to the powerer of zero is always 1
-    def test_power_powerer_of_zero(self):
-        self.assertEqual(self.math.power(185, 0), 1)
-
     def test_power_positive_even(self):
         self.assertEqual(self.math.power(-10, 2), 100)
         self.assertEqual(self.math.power(5, 4), 625)
@@ -150,15 +146,18 @@ class MerionesLibTestPower(unittest.TestCase):
         self.assertEqual(self.math.power(2, 5), 32)
         self.assertEqual(self.math.power(-10, 1), -10)
 
-    def test_power_negative(self):
-        self.assertEqual(self.math.power(2, -1), 0.5)
-        self.assertEqual(self.math.power(4, -2), 0.0625)
-        self.assertEqual(self.math.power(1, -10), 1)
-
-    def test_power_decimal(self):
-        self.assertEqual(self.math.power(1, 3.25), 1)
-        self.assertEqual(self.math.power(-25, 2.5), 3125)
-        self.assertEqual(self.math.power(4, -0.5), 0.5)
+    # It is required by the assignment that power can have only natural number as an exponent
+    def test_power_forbidden_exponents(self):
+        with self.assertRaises(ValueError):
+            self.math.power(185, 0)
+        with self.assertRaises(ValueError):
+            self.math.power(2, -1)
+        with self.assertRaises(ValueError):
+            self.math.power(1, -10)
+        with self.assertRaises(ValueError):
+            self.math.power(-25, 2.5)
+        with self.assertRaises(ValueError):
+            self.math.power(4, -0.5)
 
 
 # Tests the root function (√)
