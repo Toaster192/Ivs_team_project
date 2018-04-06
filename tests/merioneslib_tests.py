@@ -252,49 +252,49 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
         self.math = MerionesLib()
 
     def test_solve_expression_addition(self):
-        self.assertEqual(self.math.solve_expression("5+8"), "13")
-        self.assertEqual(self.math.solve_expression("-10+19"), "9")
-        self.assertEqual(self.math.solve_expression("5+-9"), "-4")
-        self.assertEqual(self.math.solve_expression("4.5+10"), "14.5")
-        self.assertEqual(self.math.solve_expression("9+-4.5"), "4.5")
+        self.assertEqual(self.math.solve_expression("5+8"), 13)
+        self.assertEqual(self.math.solve_expression("-10+19"), 9)
+        self.assertEqual(self.math.solve_expression("5+-9"), -4)
+        self.assertEqual(self.math.solve_expression("4.5+10"), 14.5)
+        self.assertEqual(self.math.solve_expression("9+-4.5"), 4.5)
 
     def test_solve_expression_subtraction(self):
-        self.assertEqual(self.math.solve_expression("5-8"), "-3")
-        self.assertEqual(self.math.solve_expression("-10-19"), "-29")
-        self.assertEqual(self.math.solve_expression("5--9"), "14")
-        self.assertEqual(self.math.solve_expression("4.5-10"), "-6.5")
-        self.assertEqual(self.math.solve_expression("9-4.5"), "4.5")
+        self.assertEqual(self.math.solve_expression("5-8"), -3)
+        self.assertEqual(self.math.solve_expression("-10-19"), -29)
+        self.assertEqual(self.math.solve_expression("5--9"), 14)
+        self.assertEqual(self.math.solve_expression("4.5-10"), -5.5)
+        self.assertEqual(self.math.solve_expression("9-4.5"), 4.5)
 
     def test_solve_expression_multiplication(self):
-        self.assertEqual(self.math.solve_expression("5*8"), "40")
-        self.assertEqual(self.math.solve_expression("-10*19"), "-190")
-        self.assertEqual(self.math.solve_expression("5*-9"), "-45")
-        self.assertEqual(self.math.solve_expression("4.5*10"), "45")
-        self.assertEqual(self.math.solve_expression("9*-4.5"), "-40.5")
+        self.assertEqual(self.math.solve_expression("5*8"), 40)
+        self.assertEqual(self.math.solve_expression("-10*19"), -190)
+        self.assertEqual(self.math.solve_expression("5*-9"), -45)
+        self.assertEqual(self.math.solve_expression("4.5*10"), 45)
+        self.assertEqual(self.math.solve_expression("9*-4.5"), -40.5)
 
     def test_solve_expression_division(self):
-        self.assertEqual(self.math.solve_expression("5/8"), "0.625")
-        self.assertEqual(self.math.solve_expression("-10/5"), "-2")
-        self.assertEqual(self.math.solve_expression("5/-25"), "-0.2")
-        self.assertEqual(self.math.solve_expression("4.5/10"), "0.45")
-        self.assertEqual(self.math.solve_expression("9/-4.5"), "-2")
+        self.assertEqual(self.math.solve_expression("5/8"), 0.625)
+        self.assertEqual(self.math.solve_expression("-10/5"), -2)
+        self.assertEqual(self.math.solve_expression("5/-25"), -0.2)
+        self.assertEqual(self.math.solve_expression("4.5/10"), 0.45)
+        self.assertEqual(self.math.solve_expression("9/-4.5"), -2)
 
         # Division by zero is forbidden in math
         with self.assertRaises(ValueError):
             self.math.solve_expression("-5/0")
 
     def test_solve_expression_power(self):
-        self.assertEqual(self.math.solve_expression("5^8"), "390625")
-        self.assertEqual(self.math.solve_expression("-10^5"), "-100000")
-        self.assertEqual(self.math.solve_expression("-10^4"), "10000")
-        self.assertEqual(self.math.solve_expression("4.5^5"), "1845.28125")
+        self.assertEqual(self.math.solve_expression("5^8"), 390625)
+        self.assertEqual(self.math.solve_expression("-10^5"), -100000)
+        self.assertEqual(self.math.solve_expression("-10^4"), 10000)
+        self.assertEqual(self.math.solve_expression("4.5^5"), 1845.28125)
 
     def test_solve_expression_root(self):
-        self.assertEqual(self.math.solve_expression("3√8"), "2")
-        self.assertEqual(self.math.solve_expression("√16"), "4")
-        self.assertEqual(self.math.solve_expression("3√-125"), "-5")
-        self.assertEqual(self.math.solve_expression("-5√100000"), "-10")
-        self.assertEqual(self.math.solve_expression("3√12,167"), "2.3")
+        self.assertEqual(self.math.solve_expression("3√8"), 2)
+        self.assertEqual(self.math.solve_expression("√16"), 4)
+        self.assertEqual(self.math.solve_expression("3√-125"), -5)
+        self.assertEqual(self.math.solve_expression("-5√100000"), -10)
+        self.assertEqual(self.math.solve_expression("3√12,167"), 2)
 
         # Even root of negative number is forbidden in math
         with self.assertRaises(ValueError):
@@ -303,10 +303,10 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("√-2")
 
     def test_solve_expression_factorial(self):
-        self.assertEqual(self.math.solve_expression("0!"), "1")
-        self.assertEqual(self.math.solve_expression("1!"), "1")
-        self.assertEqual(self.math.solve_expression("2!"), "2")
-        self.assertEqual(self.math.solve_expression("5!"), "120")
+        self.assertEqual(self.math.solve_expression("0!"), 1)
+        self.assertEqual(self.math.solve_expression("1!"), 1)
+        self.assertEqual(self.math.solve_expression("2!"), 2)
+        self.assertEqual(self.math.solve_expression("5!"), 120)
 
         # Factorials of negative nad decimal numbers are forbidden in math
         with self.assertRaises(ValueError):
@@ -315,10 +315,10 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("-1!")
 
     def test_solve_expression_ln(self):
-        self.assertEqual(self.math.solve_expression("ln1"), "0.0")
-        self.assertEqual(float(self.math.solve_expression("ln0.2")), -1.6094379, 7)
-        self.assertEqual(float(self.math.solve_expression("ln2")), 0.693147, 6)
-        self.assertEqual(float(self.math.solve_expression("ln0.2")), 3.7376696, 7)
+        self.assertEqual(self.math.solve_expression("ln1"), 0)
+        self.assertEqual(self.math.solve_expression("ln0.2"), -1.6094379, 7)
+        self.assertEqual(self.math.solve_expression("ln2"), 0.693147, 6)
+        self.assertEqual(self.math.solve_expression("ln0.2"), 3.7376696, 7)
 
         # Natural logarithm of negative number or zero is forbidden in math
         with self.assertRaises(ValueError):
@@ -327,10 +327,10 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
             self.math.solve_expression("ln-42")
 
     def test_solve_expression_multiple_operations(self):
-        self.assertEqual(self.math.solve_expression("5+8/2*10"), "45")
-        self.assertEqual(self.math.solve_expression("5^2+10*2"), "45")
-        self.assertEqual(self.math.solve_expression("2!*8+1"), "17")
-        self.assertEqual(self.math.solve_expression("1*5/5+1-1*3/3^1"), "1")
+        self.assertEqual(self.math.solve_expression("5+8/2*10"), 45)
+        self.assertEqual(self.math.solve_expression("5^2+10*2"), 45)
+        self.assertEqual(self.math.solve_expression("2!*8+1"), 17)
+        self.assertEqual(self.math.solve_expression("1*5/5+1-1*3/3^1"), 1)
 
         with self.assertRaises(ValueError):
             self.math.solve_expression("2!*8+1/0")
