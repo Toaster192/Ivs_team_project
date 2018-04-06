@@ -297,3 +297,71 @@ class MerionesLib:
             return int(number[0])
         else:
             return float(s)
+
+    ##
+    # Method solves mathematical expressions without parentheses
+    #
+    # @param expr mathematical expression as a string
+    # @exception when there is either a syntactic or mathematical error in the expression
+    # @return value of the expression (one number)
+    def solve_expression(self, expr):
+        operators = ["ln", "!", "√", "^", "*", "/", "+", "-"]
+        expression = self.parse_expression(expr, operators)
+
+        operator_precedence = [["ln"], ["!"], ["^", "√"], ["*", "/"], ["+", "-"]]
+        for operator in operator_precedence:
+            index = 0
+            while index < len(expression):
+                item = expression[index]
+                if item in operator:
+                    if item == "+":
+                        result = [str(self.add(self.str_to_num(expression[index - 1]),
+                                               self.str_to_num(expression[index + 1])))]
+                        expression[index - 1:index + 2] = result
+                        index -= 1
+
+                    elif item == "-":
+                        result = [str(self.sub(self.str_to_num(expression[index - 1]),
+                                               self.str_to_num(expression[index + 1])))]
+                        expression[index - 1:index + 2] = result
+                        index -= 1
+
+                    elif item == "*":
+                        result = [str(self.mul(self.str_to_num(expression[index - 1]),
+                                               self.str_to_num(expression[index + 1])))]
+                        expression[index - 1:index + 2] = result
+                        index -= 1
+
+                    elif item == "/":
+                        result = [str(self.div(self.str_to_num(expression[index - 1]),
+                                               self.str_to_num(expression[index + 1])))]
+                        expression[index - 1:index + 2] = result
+                        index -= 1
+
+                    elif item == "^":
+                        result = [str(self.power(self.str_to_num(expression[index - 1]),
+                                                 self.str_to_num(expression[index + 1])))]
+                        expression[index - 1:index + 2] = result
+                        index -= 1
+
+                    elif item == "√":
+                        if index > 0 and not expression[index - 1] in operators:
+                            result = [str(self.root(self.str_to_num(expression[index - 1]),
+                                                    self.str_to_num(expression[index + 1])))]
+                            expression[index - 1:index + 2] = result
+                            index -= 1
+                        else:
+                            result = [str(self.root(2, self.str_to_num(expression[index + 1])))]
+                            expression[index:index + 2] = result
+
+                    elif item == "!":
+                        result = [str(self.factorial(self.str_to_num(expression[index - 1])))]
+                        expression[index - 1:index + 1] = result
+                        index -= 1
+
+                    elif item == "ln":
+                        result = [str(self.ln(self.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                index += 1
+        return self.str_to_num(expression[0])
