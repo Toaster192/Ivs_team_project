@@ -66,28 +66,41 @@ class MerionesLib:
         a = float(a)
         return a / b
 
-    """ Alpha version, waiting for SolveEquation to be done
-    def ParetheParse(str_input, remains):
-    str_input.strip()
-    braces = {'(': ')'}     # Could add '[': ']', '{': '}' etc.
-    for i, c in enumerate(str_input):
-        if c in braces.keys():
-            remains.append(i)
-            remains.append(braces.get(c))
-        if c in remains[-1]:
-            if remains.len() < 2:
-                print("Parentheses error (too many ending parentheses)")
-                raise ValueError('Ma ERROR')
-            remains.pop()
-            j = remains[-1]
-            remains.pop()
-            temp = ParetheParse(str_input[j:i], remains)
-            str_input = str_input[:j] + temp + str_input[i:]
-    if remains:
-        print("Parentheses error (too many beginning parentheses)")
-        raise ValueError('Ma ERROR')
-    return SolveEquation(str_input)
-    """
+    ##
+    # Method recursively solves expressions in parentheses
+    #
+    # @param str_input The string input to be calculated
+    # @param remains A list of unclosed braces (for recursion purposes, has default value)
+    # @return The value of the input calculated in proper order
+
+    @staticmethod
+    def parse_parentheses(str_input, remains=None):
+        if remains is None:
+            remains = []
+
+        str_input.strip()
+        braces = {'(': ')'}     # Could add '[': ']', '{': '}' etc.
+        for i, c in enumerate(str_input):
+            if c in braces.keys():
+                remains.append(i)
+                remains.append(braces.get(c))
+
+            if c in remains[-1]:
+                if len(remains) < 2:
+                    print("Parentheses error (too many ending parentheses)")
+                    raise ValueError('Ma ERROR')
+
+                remains.pop()
+                j = remains[-1]
+                remains.pop()
+                temp = MerionesLib.parse_parentheses(str_input[j:i], remains)
+                str_input = str_input[:j] + temp + str_input[i:]
+
+        if remains:
+            print("Parentheses error (too many beginning parentheses)")
+            raise ValueError('Ma ERROR')
+
+        return MerionesLib.solve_expression(str_input)
 
     ##
     # Method computes factorial of n
@@ -99,7 +112,7 @@ class MerionesLib:
     def factorial(n):
         if type(n) != int or n < 0:
             print("Error - wrong factorial number format!")
-            raise ValueError('Ma ERROR')            
+            raise ValueError('Ma ERROR')
         if n == 0:
             return 1
         else:
