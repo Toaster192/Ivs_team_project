@@ -220,3 +220,66 @@ class MerionesLib:
             return x + 273.15
         elif units == 'F':
             return (x * 9/5) + 32
+
+    ##
+    # Method divides expression to individual numbers and operators and saves that to a list
+    #
+    # @param expr mathematical expression to parse
+    # @param operators operators that are used in given expression
+    # @exception "Syn error" if there are syntactic errors in the expression (according to math)
+    # @return expression converted to list of individual numbers and operators
+    @staticmethod
+    def parse_expression(expr, operators):
+        result = [expr]
+
+        for operator in operators:
+            expression = []
+            expression.extend(result)
+
+            for m in expression:
+                if operator in m:
+                    new_expression = m.split(operator)
+                    i = 1
+
+                    while i < len(new_expression):
+                        new_expression.insert(i, operator)
+                        i += 2
+                    new_expression = (filter(lambda a: a != "", new_expression))
+
+                    index = result.index(m)
+                    result.remove(m)
+
+                    for n in new_expression:
+                        result.insert(index, n)
+                        index += 1
+
+        for index, item in enumerate(result):
+            if item == "-" and (index == 0 or result[index - 1] in operators):
+                result[index:index + 2] = [''.join(result[index:index + 2])]
+
+        # check the parsed expression for syntactic errors
+        for index, item in enumerate(result):
+            # check for operators on the begining or end of expression
+            if item in operators:
+                if index == 0 and item != "ln" and item != "√":
+                    raise ValueError("Syn Error")
+                if index == len(result) - 1 and item != "!":
+                    raise ValueError("Syn Error")
+
+            # check for forbidden double operators
+            if item in operators and result[index - 1] in operators:
+                if index > 0 and result[index - 1] != "!" and item != "ln" and item != "√":
+                    raise ValueError("Syn Error")
+
+            # check if there is an operator after ! and before ln
+            if item == "!" and index < len(result) - 1 and result[index + 1] not in operators:
+                raise ValueError("Syn Error")
+
+            if item == "ln" and index > 0 and result[index - 1] not in operators:
+                raise ValueError("Syn Error")
+
+            if item not in operators:
+                # check if it is a valid number
+                float(item)
+
+        return result
