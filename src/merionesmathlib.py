@@ -283,3 +283,17 @@ class MerionesLib:
                 float(item)
 
         return result
+
+    ##
+    # Method converts string either to int or float depending on its value
+    #
+    # @param s string containing correct number
+    # @exception when the given string isn't a number
+    # @return converted number (int or float)
+    @staticmethod
+    def str_to_num(s):
+        number = s.split(".")
+        if len(number) == 1 or int(number[1]) == 0:
+            return int(number[0])
+        else:
+            return float(s)
