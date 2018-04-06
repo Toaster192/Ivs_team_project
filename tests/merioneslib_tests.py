@@ -9,7 +9,7 @@ from src.merionesmathlib import MerionesLib
 
 
 # To run tests, go to the parent directory and
-# type "python3 -m tests.merioneslib_tests.py"
+# type "python3 -m tests.merioneslib_tests"
 
 # Tests the add function (+)
 class MerionesLibTestAdd(unittest.TestCase):
@@ -486,9 +486,35 @@ class MerionesLibTestParseExpression(unittest.TestCase):
         self.assertEqual(self.math.parse_expression("5^8", self.operators), ["5", "^", "8"])
 
     def test_parse_expression_multiple_operations(self):
-        self.assertEqual(self.math.parse_expression("3!+8/1*5", self.operators), ["3", "!", "+", "8", "/", "1", "*", "5"])
-        self.assertEqual(self.math.parse_expression("1*-5+8/3.5", self.operators), ["1", "*", "-5", "+", "-", "/", "3.5"])
-        self.assertEqual(self.math.parse_expression("ln-0.3+9^7", self.operators), ["ln", "-0.3", "+", "9", "^", "7"])
+        self.assertEqual(self.math.parse_expression("3!+8/1*5", self.operators),
+                         ["3", "!", "+", "8", "/", "1", "*", "5"])
+
+        self.assertEqual(self.math.parse_expression("1*-5+8/3.5", self.operators),
+                         ["1", "*", "-5", "+", "8", "/", "3.5"])
+
+        self.assertEqual(self.math.parse_expression("ln-0.3+9^7", self.operators),
+                         ["ln", "-0.3", "+", "9", "^", "7"])
+
+    # Tests for an raised exception when given a wrong expresion (multiple operators after each other,
+    # unknown operators, ...)
+    def test_parse_expression_wrong_expressions(self):
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("+5", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("5+", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("--5", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("1ln5", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("3!5", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("5+1++8", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("+5-8", self.operators)
+        with self.assertRaises(ValueError):
+            self.math.parse_expression("5√", self.operators)
+
 
 
 if __name__ == '__main__':
