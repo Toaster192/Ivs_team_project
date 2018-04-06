@@ -516,6 +516,30 @@ class MerionesLibTestParseExpression(unittest.TestCase):
             self.math.parse_expression("5√", self.operators)
 
 
+# Tests the str_to_num function
+class MerionesLibTestStrToNum(unittest.TestCase):
+    def setUp(self):
+        self.math = MerionesLib()
+
+    def test_str_to_num_ints(self):
+        self.assertEqual(self.math.str_to_num("10"), 10)
+        self.assertEqual(self.math.str_to_num("-0.0"), 0)
+        self.assertEqual(self.math.str_to_num("-558"), -558)
+        self.assertEqual(self.math.str_to_num("11.0"), 11)
+
+    def test_str_to_num_floats(self):
+        self.assertEqual(self.math.str_to_num("5.8"), 5.8)
+        self.assertEqual(self.math.str_to_num("-0.8456"), -0.8456)
+        self.assertEqual(self.math.str_to_num("7864.753"), 7864.753)
+
+    def test_str_to_num_not_numbers(self):
+        with self.assertRaises(ValueError):
+            self.math.str_to_num("a")
+        with self.assertRaises(ValueError):
+            self.math.str_to_num("2.2.2.2")
+        with self.assertRaises(ValueError):
+            self.math.str_to_num("658+887.1")
+
 
 if __name__ == '__main__':
     unittest.main()
