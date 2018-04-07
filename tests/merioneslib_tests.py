@@ -347,7 +347,7 @@ class MerionesLibTestParseParentheses(unittest.TestCase):
 
     def test_parse_parentheses(self):
         self.assertEqual(self.math.parse_parentheses("(5+8)*2"), "26")
-        self.assertEqual(self.math.parse_parentheses("-(10+19)"), "-9")
+        self.assertEqual(self.math.parse_parentheses("-(10+19)"), "-29")
         self.assertEqual(self.math.parse_parentheses("(1+2)!"), "6")
         self.assertEqual(self.math.parse_parentheses("((1+2)*(1-2))*3"), "-9")
         self.assertEqual(self.math.parse_parentheses("(((((9+1))))/2)^(((1+2)*2)/2)"), "125")

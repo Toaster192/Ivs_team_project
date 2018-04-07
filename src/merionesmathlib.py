@@ -71,36 +71,42 @@ class MerionesLib:
     #
     # @param str_input The string input to be calculated
     # @param remains A list of unclosed braces (for recursion purposes, has default value)
+    # @param deep A counter for how deep the recursion is going (to track if there are any leftover parentheses)
     # @return The value of the input calculated in proper order
 
     @staticmethod
-    def parse_parentheses(str_input, remains=None):
+    def parse_parentheses(str_input, remains=None, deep=0):
         if remains is None:
             remains = []
 
         str_input.strip()
         braces = {'(': ')'}     # Could add '[': ']', '{': '}' etc.
-        for i, c in enumerate(str_input):
+
+        # Can't use enumerate because I need to change the index
+        i = -1
+        for c in str_input:
+            i += 1
             if c in braces.keys():
                 remains.append(i)
                 remains.append(braces.get(c))
 
-            if c in remains[-1]:
-                if len(remains) < 2:
-                    print("Parentheses error (too many ending parentheses)")
-                    raise ValueError('Ma ERROR')
+            elif c in braces.items() and len(remains) < 2:
+                print("Parentheses error (too many ending parentheses)")
+                raise ValueError('Ma ERROR')
 
+            elif len(remains) and c in remains[-1]:
                 remains.pop()
                 j = remains[-1]
                 remains.pop()
-                temp = MerionesLib.parse_parentheses(str_input[j:i], remains)
-                str_input = str_input[:j] + temp + str_input[i:]
+                temp = MerionesLib.parse_parentheses(str_input[j+1:i], remains, deep + 1)
+                str_input = str_input[:j] + str(temp) + str_input[i+1:]
+                i = j+len(str(temp))-1
 
-        if remains:
+        if not deep and remains:
             print("Parentheses error (too many beginning parentheses)")
             raise ValueError('Ma ERROR')
 
-        return MerionesLib.solve_expression(str_input)
+        return str(MerionesLib.solve_expression(str_input))
 
     ##
     # Method computes factorial of n
@@ -366,12 +372,12 @@ class MerionesLib:
 
                     elif item == "√":
                         if index > 0 and not expression[index - 1] in operators:
-                            result = [str(MerionesLib.root(MerionesLib.str_to_num(expression[index - 1]),
-                                                           MerionesLib.str_to_num(expression[index + 1])))]
+                            result = [str(MerionesLib.root(MerionesLib.str_to_num(expression[index + 1]),
+                                                           MerionesLib.str_to_num(expression[index - 1])))]
                             expression[index - 1:index + 2] = result
                             index -= 1
                         else:
-                            result = [str(MerionesLib.root(2, MerionesLib.str_to_num(expression[index + 1])))]
+                            result = [str(MerionesLib.root(MerionesLib.str_to_num(expression[index + 1]), 2))]
                             expression[index:index + 2] = result
 
                     elif item == "!":
