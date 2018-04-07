@@ -175,7 +175,7 @@ class MerionesLibTestRoot(unittest.TestCase):
 
     def test_root_of_positive(self):
         self.assertEqual(self.math.root(100, 2), 10)
-        self.assertEqual(self.math.root(9, 3), 3)
+        self.assertEqual(self.math.root(27, 3), 3)
         self.assertEqual(self.math.root(0, 2), 0)
 
     def test_root_odd_root_of_negative(self):
