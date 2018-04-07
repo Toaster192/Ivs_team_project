@@ -149,6 +149,9 @@ class MerionesLib:
         if type(rvalue) != int or (rvalue <= 0 and rvalue % 2 == 0):
             print("Error - root value has to be a positive or even, negative integer!")
             raise ValueError('Ma ERROR')
+        if n < 0:
+            n = -n
+            return -1**(n**(1/rvalue))
         return n ** (1/rvalue)
 
     ##
