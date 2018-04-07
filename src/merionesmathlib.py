@@ -127,7 +127,7 @@ class MerionesLib:
 
     @staticmethod
     def power(base, exponent):
-        if type(exponent) != int or n <= 0:
+        if type(exponent) != int or exponent <= 0:
             print("Error - exponent has to be integer!")
             raise ValueError('Ma ERROR')
         return base**exponent
@@ -140,7 +140,7 @@ class MerionesLib:
 
     @staticmethod
     def root(n, rvalue):
-        if type(exponent) != int or n == 0:
+        if type(rvalue) != int or rvalue == 0:
             print("Error - root value has to be integer!")
             raise ValueError('Ma ERROR')
         return n ** (1/rvalue)
