@@ -151,7 +151,7 @@ class MerionesLib:
             raise ValueError('Ma ERROR')
         if n < 0 and rvalue % 2 != 0:
             n = -n
-            return -1**(n**(1/rvalue))
+            return -1 * (n ** (1/rvalue))
         return n ** (1/rvalue)
 
     ##
