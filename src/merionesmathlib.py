@@ -165,9 +165,6 @@ class MerionesLib:
 
     @staticmethod
     def convert_weight(x, units):
-        if units != 'mg' and units != 'g' and units != 'lb' and units != 't':
-            print("Error - wrong units!")
-            raise ValueError('Ma ERROR')
         if units == 'mg':
             return x * 1000 ** 2
         elif units == 'g':
@@ -176,6 +173,9 @@ class MerionesLib:
             return x * 2.20462262
         elif units == 't':
             return x * 0.001
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
 
     ##
     # Method converts number x to units given by parameter units
@@ -186,9 +186,6 @@ class MerionesLib:
 
     @staticmethod
     def convert_length(x, units):
-        if units != 'm' and units != 'cm' and units != 'mm' and units != 'mi':
-            print("Error - wrong units!")
-            raise ValueError('Ma ERROR')
         if units == 'm':
             return x * 1000
         elif units == 'cm':
@@ -197,6 +194,9 @@ class MerionesLib:
             return x * 1000**2
         elif units == 'mi':
             return x * 0.62137199
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
 
     ##
     # Method converts number x to units given by parameter units
@@ -207,15 +207,15 @@ class MerionesLib:
 
     @staticmethod
     def convert_time(x, units):
-        if units != 'min' and units != 's' and units != 'day':
-            print("Error - wrong units!")
-            raise ValueError('Ma ERROR')
         if units == 'min':
             return x * 60
         elif units == 's':
             return x * 3600
         elif units == 'day':
             return x * 0.0416667
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
 
     ##
     # Method converts number x to units given by parameter units
@@ -226,13 +226,13 @@ class MerionesLib:
 
     @staticmethod
     def convert_degrees(x, units):
-        if units != 'K' and units != 'F':
-            print("Error - wrong units!")
-            raise ValueError('Ma ERROR')
         if units == 'K':
             return x + 273.15
         elif units == 'F':
             return (x * 9/5) + 32
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
 
     ##
     # Method divides expression to individual numbers and operators and saves that to a list
@@ -241,6 +241,7 @@ class MerionesLib:
     # @param operators operators that are used in given expression
     # @exception "Syn error" if there are syntactic errors in the expression (according to math)
     # @return expression converted to list of individual numbers and operators
+
     @staticmethod
     def parse_expression(expr, operators):
         result = [expr]
@@ -303,6 +304,7 @@ class MerionesLib:
     # @param s string containing correct number
     # @exception when the given string isn't a number
     # @return converted number (int or float)
+
     @staticmethod
     def str_to_num(s):
         number = s.split(".")
@@ -317,6 +319,7 @@ class MerionesLib:
     # @param expr mathematical expression as a string
     # @exception when there is either a syntactic or mathematical error in the expression
     # @return value of the expression (one number)
+
     def solve_expression(self, expr):
         operators = ["ln", "!", "√", "^", "*", "/", "+", "-"]
         expression = self.parse_expression(expr, operators)
