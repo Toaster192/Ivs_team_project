@@ -316,9 +316,9 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
 
     def test_solve_expression_ln(self):
         self.assertEqual(self.math.solve_expression("ln1"), 0)
-        self.assertEqual(self.math.solve_expression("ln0.2"), -1.6094379, 7)
-        self.assertEqual(self.math.solve_expression("ln2"), 0.693147, 6)
-        self.assertEqual(self.math.solve_expression("ln0.2"), 3.7376696, 7)
+        self.assertAlmostEqual(self.math.solve_expression("ln0.2"), -1.6094379, 7)
+        self.assertAlmostEqual(self.math.solve_expression("ln2"), 0.693147, 6)
+        self.assertAlmostEqual(self.math.solve_expression("ln0.2"), -1.6094379, 7)
 
         # Natural logarithm of negative number or zero is forbidden in math
         with self.assertRaises(ValueError):
