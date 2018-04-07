@@ -320,9 +320,10 @@ class MerionesLib:
     # @exception when there is either a syntactic or mathematical error in the expression
     # @return value of the expression (one number)
 
-    def solve_expression(self, expr):
+    @staticmethod
+    def solve_expression(expr):
         operators = ["ln", "!", "√", "^", "*", "/", "+", "-"]
-        expression = self.parse_expression(expr, operators)
+        expression = MerionesLib.parse_expression(expr, operators)
 
         operator_precedence = [["ln"], ["!"], ["^", "√"], ["*", "/"], ["+", "-"]]
         for operator in operator_precedence:
@@ -331,53 +332,53 @@ class MerionesLib:
                 item = expression[index]
                 if item in operator:
                     if item == "+":
-                        result = [str(self.add(self.str_to_num(expression[index - 1]),
-                                               self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.add(MerionesLib.str_to_num(expression[index - 1]),
+                                                      MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
                     elif item == "-":
-                        result = [str(self.sub(self.str_to_num(expression[index - 1]),
-                                               self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.sub(MerionesLib.str_to_num(expression[index - 1]),
+                                                      MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
                     elif item == "*":
-                        result = [str(self.mul(self.str_to_num(expression[index - 1]),
-                                               self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.mul(MerionesLib.str_to_num(expression[index - 1]),
+                                                      MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
                     elif item == "/":
-                        result = [str(self.div(self.str_to_num(expression[index - 1]),
-                                               self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.div(MerionesLib.str_to_num(expression[index - 1]),
+                                                      MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
                     elif item == "^":
-                        result = [str(self.power(self.str_to_num(expression[index - 1]),
-                                                 self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.power(MerionesLib.str_to_num(expression[index - 1]),
+                                                        MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
                     elif item == "√":
                         if index > 0 and not expression[index - 1] in operators:
-                            result = [str(self.root(self.str_to_num(expression[index - 1]),
-                                                    self.str_to_num(expression[index + 1])))]
+                            result = [str(MerionesLib.root(MerionesLib.str_to_num(expression[index - 1]),
+                                                           MerionesLib.str_to_num(expression[index + 1])))]
                             expression[index - 1:index + 2] = result
                             index -= 1
                         else:
-                            result = [str(self.root(2, self.str_to_num(expression[index + 1])))]
+                            result = [str(MerionesLib.root(2, MerionesLib.str_to_num(expression[index + 1])))]
                             expression[index:index + 2] = result
 
                     elif item == "!":
-                        result = [str(self.factorial(self.str_to_num(expression[index - 1])))]
+                        result = [str(MerionesLib.factorial(MerionesLib.str_to_num(expression[index - 1])))]
                         expression[index - 1:index + 1] = result
                         index -= 1
 
                     elif item == "ln":
-                        result = [str(self.ln(self.str_to_num(expression[index + 1])))]
+                        result = [str(MerionesLib.ln(MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index:index + 2] = result
 
                 index += 1
-        return self.str_to_num(expression[0])
+        return MerionesLib.str_to_num(expression[0])
