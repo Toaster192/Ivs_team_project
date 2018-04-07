@@ -106,7 +106,7 @@ class MerionesLibTestDiv(unittest.TestCase):
     # Division by zero is usually forbidden in math
     def test_div_division_by_zero(self):
         with self.assertRaises(ValueError):
-            self.math.div(10,0)
+            self.math.div(10, 0)
 
     def test_div_positive(self):
         self.assertEqual(self.math.div(10, 2), 5)
