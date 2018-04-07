@@ -389,7 +389,7 @@ class MerionesLibTestConvertWeight(unittest.TestCase):
     def test_convert_to_lb(self):
         self.assertAlmostEqual(self.math.convert_weight(10, "lb"), 22.0462, 4)
         self.assertEqual(self.math.convert_weight(0, "lb"), 0)
-        self.assertAlmostEqual(self.math.convert_weight(2.5, "lb"), 5.5115, 4)
+        self.assertAlmostEqual(self.math.convert_weight(2.5, "lb"), 5.5116, 4)
 
     def test_convert_to_t(self):
         self.assertEqual(self.math.convert_weight(10, "t"), 0.01)
