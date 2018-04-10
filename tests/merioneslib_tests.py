@@ -179,19 +179,25 @@ class MerionesLibTestRoot(unittest.TestCase):
         self.assertEqual(self.math.root(0, 2), 0)
 
     def test_root_odd_root_of_negative(self):
-        self.assertEqual(self.math.root(-1, 3), -1)
-        self.assertEqual(self.math.root(-512, 9), -2)
-        self.assertEqual(self.math.root(-10, 1), -10)
+        with self.assertRaises(ValueError):
+            self.math.root(-1, 3)
+        with self.assertRaises(ValueError):
+            self.math.root(-512, 9)
+        with self.assertRaises(ValueError):
+            self.math.root(-10, 1)
 
     def test_root_negative_root(self):
-        self.assertEqual(self.math.root(2, -1), 0.5)
-        self.assertEqual(self.math.root(4, -2), 0.5)
-        self.assertEqual(self.math.root(1, -10), 1)
+        with self.assertRaises(ValueError):
+            self.math.root(2, -1)
+        with self.assertRaises(ValueError):
+            self.math.root(4, -2)
+        with self.assertRaises(ValueError):
+            self.math.root(1, -10)
 
     def test_root_decimal(self):
-        self.assertEqual(self.math.root(4.875, 3.25), 172.1542)
+        self.assertAlmostEqual(self.math.root(172.1542, 3.25), 4.875, 4)
         self.assertEqual(self.math.root(3125, 2.5), 25)
-        self.assertEqual(self.math.root(0.5, -0.5), 4)
+        self.assertEqual(self.math.root(0.5, 0.5), 0.25)
 
 
 # Tests the factorial function (!)
@@ -292,9 +298,9 @@ class MerionesLibTestSolveExpression(unittest.TestCase):
     def test_solve_expression_root(self):
         self.assertEqual(self.math.solve_expression("3√8"), 2)
         self.assertEqual(self.math.solve_expression("√16"), 4)
-        self.assertEqual(self.math.solve_expression("3√-125"), -5)
-        self.assertEqual(self.math.solve_expression("-5√100000"), -10)
-        self.assertEqual(self.math.solve_expression("3√12.167"), 2)
+        self.assertEqual(self.math.solve_expression("3√125"), 5)
+        self.assertEqual(self.math.solve_expression("5√100000"), 10)
+        self.assertEqual(self.math.solve_expression("3√12.167"), 2.3)
 
         # Even root of negative number is forbidden in math
         with self.assertRaises(ValueError):

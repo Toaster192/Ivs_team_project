@@ -136,7 +136,7 @@ class MerionesLib:
         if type(exponent) != int or exponent <= 0:
             print("Error - exponent has to be a positive integer!")
             raise ValueError('Ma ERROR')
-        return base**exponent
+        return round(base**exponent, 13)
 
     ##
     # Method calculates square root of n
@@ -146,13 +146,10 @@ class MerionesLib:
 
     @staticmethod
     def root(n, rvalue):
-        if type(rvalue) != int or (rvalue <= 0 and rvalue % 2 == 0):
-            print("Error - root value has to be a positive or even, negative integer!")
+        if rvalue <= 0 or n < 0:
+            print("Error -both root values have to be a positive integer!")
             raise ValueError('Ma ERROR')
-        if n < 0 and rvalue % 2 != 0:
-            n = -n
-            return -1 * (n ** (1/rvalue))
-        return n ** (1/rvalue)
+        return round(n ** (1/rvalue), 13)
 
     ##
     # Method calculates natural logarithm of x
@@ -166,7 +163,7 @@ class MerionesLib:
             print("Error - ln value has to be more than 0!")
             raise ValueError('Ma ERROR')
         n = 100000000.0
-        return n * ((x ** (1/n)) - 1)
+        return round(n * ((x ** (1/n)) - 1), 13)
 
     ##
     # Method converts number x to units given by parameter units
@@ -178,13 +175,13 @@ class MerionesLib:
     @staticmethod
     def convert_weight(x, units):
         if units == 'mg':
-            return x * 1000 ** 2
+            return round(x * 1000 ** 2, 13)
         elif units == 'g':
-            return x * 1000
+            return round(x * 1000, 13)
         elif units == 'lb':
-            return x * 2.20462262
+            return round(x * 2.20462262, 13)
         elif units == 't':
-            return x * 0.001
+            return round(x * 0.001, 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
@@ -199,13 +196,13 @@ class MerionesLib:
     @staticmethod
     def convert_length(x, units):
         if units == 'm':
-            return x * 1000
+            return round(x * 1000, 13)
         elif units == 'cm':
-            return x * 100000
+            return round(x * 100000, 13)
         elif units == 'mm':
-            return x * 1000**2
+            return round(x * 1000**2, 13)
         elif units == 'mi':
-            return x * 0.62137199
+            return round(x * 0.62137199, 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
@@ -220,11 +217,11 @@ class MerionesLib:
     @staticmethod
     def convert_time(x, units):
         if units == 'min':
-            return x * 60
+            return round(x * 60, 13)
         elif units == 's':
-            return x * 3600
+            return round(x * 3600, 13)
         elif units == 'day':
-            return x * 0.0416667
+            return round(float(x / 24), 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
@@ -239,9 +236,9 @@ class MerionesLib:
     @staticmethod
     def convert_degrees(x, units):
         if units == 'K':
-            return x + 273.15
+            return round(x + 273.15, 13)
         elif units == 'F':
-            return (x * 9/5) + 32
+            return round((x * 9/5) + 32, 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
