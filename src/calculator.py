@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
-from ui_calculator import Ui_Calculator
-from merionesmathlib import MerionesLib
+from src.ui_calculator import Ui_Calculator
+from src.merionesmathlib import MerionesLib
+
 
 class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 
@@ -55,9 +56,8 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     def erase(self):
         self.input.setText("")
 
-    #prepared for implementation, here is where whole equation will be solved
+    # prepared for implementation, here is where whole equation will be solved
     def equals_pressed(self):
         result = MerionesLib.parse_parentheses(self.input.text())
         self.input.setText(result)
         self.input.setFocus(False)
-
