@@ -15,7 +15,7 @@ class Ui_Calculator(object):
         MainWindow.resize(300, 380)
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
-        self.input = QtWidgets.QLabel(self.centralWidget)
+        self.input = QtWidgets.QLineEdit(self.centralWidget)
         self.input.setGeometry(QtCore.QRect(0, 0, 300, 81))
         self.input.setStyleSheet("QLabel { qproperty-alignment: \'AlignVCenter | AlignRight\'; border: 1px solid gray; } background-color : white;")
         self.input.setText("")
