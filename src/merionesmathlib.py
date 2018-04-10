@@ -331,10 +331,10 @@ class MerionesLib:
 
     @staticmethod
     def solve_expression(expr):
-        operators = ["ln", "!", "√", "^", "*", "/", "+", "-"]
+        operators = ["ln", "!", "√", "^", "pow", "÷", "x", "*", "/", "+", "-"]
         expression = MerionesLib.parse_expression(expr, operators)
 
-        operator_precedence = [["ln"], ["!"], ["^", "√"], ["*", "/"], ["+", "-"]]
+        operator_precedence = [["ln"], ["!"], ["^", "pow", "√"], ["÷", "x", "*", "/"], ["+", "-"]]
         for operator in operator_precedence:
             index = 0
             while index < len(expression):
@@ -352,19 +352,19 @@ class MerionesLib:
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "*":
+                    elif item == "*" or item == "x":
                         result = [str(MerionesLib.mul(MerionesLib.str_to_num(expression[index - 1]),
                                                       MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "/":
+                    elif item == "/" or item == "÷":
                         result = [str(MerionesLib.div(MerionesLib.str_to_num(expression[index - 1]),
                                                       MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "^":
+                    elif item == "^" or "pow":
                         result = [str(MerionesLib.power(MerionesLib.str_to_num(expression[index - 1]),
                                                         MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
