@@ -1,6 +1,6 @@
-from PyQt5 import QtWidgets
-from src.ui_calculator import Ui_Calculator
-from src.merionesmathlib import MerionesLib
+from PyQt5 import QtWidgets, QtCore
+from ui_calculator import Ui_Calculator
+from merionesmathlib import MerionesLib
 
 
 class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
@@ -53,11 +53,20 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.input.setText(expression)
         self.input.setFocus(False)
 
+    def keyPressEvent(self, event):
+        if event.key() == QtCore.Qt.Key_Enter:
+            self.equals_pressed()
+        if event.key() == QtCore.Qt.Key_Escape:
+            self.close()
+
     def erase(self):
         self.input.setText("")
 
     # prepared for implementation, here is where whole equation will be solved
     def equals_pressed(self):
-        result = MerionesLib.parse_parentheses(self.input.text())
+        try:
+            result = MerionesLib.parse_parentheses(self.input.text())
+        except ValueError as e:
+            result = str(e)
         self.input.setText(result)
         self.input.setFocus(False)
