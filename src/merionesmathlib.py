@@ -303,7 +303,10 @@ class MerionesLib:
 
             if item not in operators:
                 # check if it is a valid number
-                float(item)
+                try:
+                    float(item)
+                except ValueError:
+                    raise ValueError("Syn Error")
 
         return result
 
@@ -316,11 +319,14 @@ class MerionesLib:
 
     @staticmethod
     def str_to_num(s):
-        number = s.split(".")
-        if len(number) == 1 or int(number[1]) == 0:
-            return int(number[0])
-        else:
-            return float(s)
+        try:
+            number = s.split(".")
+            if len(number) == 1 or int(number[1]) == 0:
+                return int(number[0])
+            else:
+                return float(s)
+        except ValueError:
+            raise ValueError("Syn error")
 
     ##
     # Method solves mathematical expressions without parentheses
@@ -364,7 +370,7 @@ class MerionesLib:
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "^" or "pow":
+                    elif item == "^" or item == "pow":
                         result = [str(MerionesLib.power(MerionesLib.str_to_num(expression[index - 1]),
                                                         MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
