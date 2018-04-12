@@ -70,7 +70,7 @@ class MerionesLib:
         return a / b
 
     ##
-    # Method recursively solves expressions in parentheses
+    # Method recursively solves expressions in "()" parentheses
     #
     # @param str_input The string input to be calculated
     # @param remains A list of unclosed braces (for recursion purposes, has default value)
@@ -81,9 +81,46 @@ class MerionesLib:
     def parse_parentheses(str_input, remains=None, deep=0):
         if remains is None:
             remains = []
+            str_input.replace(" ", "")
 
-        str_input.strip()
-        braces = {'(': ')'}     # Could add '[': ']', '{': '}' etc.
+        # Can't use enumerate because I need to change the index
+        i = -1
+        for c in str_input:
+            i += 1
+            if c == '(':
+                remains.append(i)
+
+            elif len(remains) and c == ')':
+                j = remains.pop()
+                temp = MerionesLib.parse_parentheses(str_input[j+1:i], remains, deep + 1)
+                str_input = str_input[:j] + str(temp) + str_input[i+1:]
+                i = j+len(str(temp))-1
+
+            elif c == ')' and len(remains) < 1:
+                print("Parentheses error (too many ending parentheses)")
+                raise ValueError('Ma ERROR')
+
+        if not deep and remains:
+            print("Parentheses error (too many beginning parentheses)")
+            raise ValueError('Ma ERROR')
+
+        return str(MerionesLib.solve_expression(str_input))
+
+    ##
+    # Method recursively solves expressions in any parentheses
+    #
+    # @param str_input The string input to be calculated
+    # @param remains A list of unclosed braces (for recursion purposes, has default value)
+    # @param deep A counter for how deep the recursion is going (to track if there are any leftover parentheses)
+    # @return The value of the input calculated in proper order
+
+    @staticmethod
+    def parse_all_parentheses(str_input, remains=None, deep=0):
+        if remains is None:
+            remains = []
+            str_input.replace(" ", "")
+
+        braces = {'(': ')', '[': ']', '{': '}'}
 
         # Can't use enumerate because I need to change the index
         i = -1
@@ -93,17 +130,16 @@ class MerionesLib:
                 remains.append(i)
                 remains.append(braces.get(c))
 
+            elif len(remains) and c in remains[-1]:
+                remains.pop()
+                j = remains.pop()
+                temp = MerionesLib.parse_all_parentheses(str_input[j + 1:i], remains, deep + 1)
+                str_input = str_input[:j] + str(temp) + str_input[i + 1:]
+                i = j + len(str(temp)) - 1
+
             elif c in braces.items() and len(remains) < 2:
                 print("Parentheses error (too many ending parentheses)")
                 raise ValueError('Ma ERROR')
-
-            elif len(remains) and c in remains[-1]:
-                remains.pop()
-                j = remains[-1]
-                remains.pop()
-                temp = MerionesLib.parse_parentheses(str_input[j+1:i], remains, deep + 1)
-                str_input = str_input[:j] + str(temp) + str_input[i+1:]
-                i = j+len(str(temp))-1
 
         if not deep and remains:
             print("Parentheses error (too many beginning parentheses)")
@@ -323,6 +359,8 @@ class MerionesLib:
     @staticmethod
     def str_to_num(s):
         try:
+            if 'e' in s:
+                return float(s)
             number = s.split(".")
             if len(number) == 1 or int(number[1]) == 0:
                 return int(number[0])
