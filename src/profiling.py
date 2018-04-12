@@ -4,6 +4,7 @@
 from merionesmathlib import MerionesLib
 import random
 
+
 def standard_deviation(numbers, n):
     return MerionesLib.parse_parentheses("√(1 / ({} - 1) * ({} - {} * ((1 / {}) * {})^2))".format(
         n,
@@ -26,13 +27,12 @@ def get_numbers_testing(x):
     string = ""
     for i in range(x):
         string += str(random.random() * 1000) + ", "
-
-    return string[:-1]
+    return string[:-2]
 
 
 if __name__ == '__main__':
+    # string_input = get_numbers_testing(100000)
     string_input = ""
     string_input = input("Enter numbers for standard deviation (separated by a comma):")
     string_input = str(string_input)[1:-1].replace(" ", "").split(',')
-    # print(get_numbers_testing(1000))
     print(standard_deviation(string_input, len(string_input)))
