@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 ##
 # @package merioneslib
 # Merioneslib is a mathematical library for Meriones calculator.
