@@ -152,7 +152,7 @@ class MerionesLib:
         if rvalue <= 0 or n < 0:
             print("Error -both root values have to be a positive integer!")
             raise ValueError('Ma ERROR')
-        return round(n ** (float(1/rvalue), 13))
+        return round(n ** (float(1/rvalue)), 13)
 
     ##
     # Method calculates natural logarithm of x
