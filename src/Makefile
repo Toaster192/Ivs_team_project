@@ -2,6 +2,8 @@
 
 .PHONY: all pack clean test doc run
 
+vpath %.py ../tests
+
 #prelozi projekt vcetne programu pro profilling
 all: 
 	pip3 freeze && pip3 install -r requirements.txt
@@ -17,8 +19,8 @@ pack: ../xchlup08_xkinst02_xsaran02_xwysog00.zip
 clean:
 
 #spusti testy matematicke knihovny
-test: ../tests/merioneslib_tests
-	python3 -m $^
+test: merioneslib_tests.py
+	cd .. && python3 -m $(patsubst ../tests/%.py,tests.%,$^)
 
 #spusti generovani dokumentace
 doc: merionesmathlib.py
