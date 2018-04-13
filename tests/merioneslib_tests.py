@@ -501,6 +501,12 @@ class MerionesLibTestParseExpression(unittest.TestCase):
         self.assertEqual(self.math.parse_expression("ln-0.3+9^7", self.operators),
                          ["ln", "-0.3", "+", "9", "^", "7"])
 
+    def test_parse_expression_e_number_notation(self):
+        self.assertEqual(self.math.parse_expression("123e+123", self.operators), ["123e+123"])
+        self.assertEqual(self.math.parse_expression("123e-123", self.operators), ["123e-123"])
+        self.assertEqual(self.math.parse_expression("-123e+123--123e+123--123e+123",
+                                                    self.operators), ["-123e+123", "-", "-123e+123", "-", "-123e+123"])
+
     # Tests for an raised exception when given a wrong expresion (multiple operators after each other,
     # unknown operators, ...)
     def test_parse_expression_wrong_expressions(self):
