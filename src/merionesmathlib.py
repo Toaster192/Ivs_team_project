@@ -330,9 +330,15 @@ class MerionesLib:
                         result.insert(index, n)
                         index += 1
 
+        # concatenate minuses to numbers where there should be negative numbers
         for index, item in enumerate(result):
             if item == "-" and (index == 0 or result[index - 1] in operators):
                 result[index:index + 2] = [''.join(result[index:index + 2])]
+
+        # concatenate numbers that are writen in format like "126e+145"
+        for index, item in enumerate(result):
+            if "e" in item:
+                result[index:index + 3] = [''.join(result[index:index + 3])]
 
         # check the parsed expression for syntactic errors
         for index, item in enumerate(result):
