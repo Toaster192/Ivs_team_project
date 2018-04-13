@@ -1,0 +1,11 @@
+Z přiložených grafů volání pro 10,100,1000 (a 100 000) čísel jde vidět, že nejdéle programu trvá rozparsovat závorky a samotné výrazy uvnitž závorek.
+
+Tyto funkce jsou také nejrozlehlejší a obsahují vnořené fory, rekurzi a pod.
+
+Z krokování těchto programů jsme přišli na několik možných optimalizací které jsme doplnili, například odstranění mezer z výrazů (a tím ušetřit kroky při 'for character in string') 
+
+Také díky náhodnému generátoru čísel a dělení velkým číslem (při 100 000 číslech) jsme zjistili že čísla mohou poté být i ve formátu "5e-08" a tento případ jsme neměli ošetřený. 
+
+Pro optimalizaci jsem také rozdělil funkci 'parse_parentheses' na dvě funkce, jedna optimalizovaná která přijímá pouze "()" závorky (protože jiné na kalkulačce stejně nelze zadat) a méně optimalizovanou verzi která přijímá všechny druhy závorek.
+
+Další optimalizace by mohla například být ukládání 'len' hodnoty kde je to možné, protože nyní je volána velice často (například pro 100 000 čísel je volána i více než 8 000 000 krát) nebo další optimalizace parsovacích funkcí.
