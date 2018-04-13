@@ -9,7 +9,7 @@ all:
 	pip3 freeze && pip3 install -r requirements.txt
     
 #zabali projekt tak aby mohl byt odevzdan
-pack: ../xchlup08_xkinst02_xsaran02_xwysog00.zip
+pack: doc ../xchlup08_xkinst02_xsaran02_xwysog00.zip
 ../xchlup08_xkinst02_xsaran02_xwysog00.zip:
 	mv ../../meriones ../../xchlup08_xkinst02_xsaran02_xwysog00
 	zip -r $@ ../../xchlup08_xkinst02_xsaran02_xwysog00
