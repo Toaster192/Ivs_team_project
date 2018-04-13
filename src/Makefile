@@ -4,10 +4,7 @@
 
 #prelozi projekt vcetne programu pro profilling
 all: 
-	pip3 freeze
-
-init:
-	pip3 install -r requirements.txt
+	pip3 freeze && pip3 install -r requirements.txt
     
 #zabali projekt tak aby mohl byt odevzdan
 pack: ../xchlup08_xkinst02_xsaran02_xwysog00.zip
