@@ -2,11 +2,19 @@ from PyQt5 import QtWidgets, QtCore
 from ui_calculator import Ui_Calculator
 from merionesmathlib import MerionesLib
 
-
+##
+# @brief Class that serves as a bridge between GUI and merionesmathlib
+#
+# Reacts on button presses and either appends the needed number to the calculator display
+# or when the "equals" button is pressed, this passes the inputed string to the mathematical
+# library which computes the result of the expression and then the ClaculatorWindow shows
+# the result on the display
+#
 class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 
-    firstNumber = None
-
+    ##
+    # @brief Initializes the calculator
+    #
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -46,6 +54,9 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.pushButton_multiply.setCheckable(True)
         self.pushButton_division.setCheckable(True)
 
+    ##
+    # @brief Appends the value of just pressed button on the display
+    #
     def button_pressed(self):
         button = self.sender()
         expression = self.input.text() + button.text()
@@ -53,16 +64,25 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.input.setText(expression)
         self.input.setFocus(False)
 
+    ##
+    # @brief Reacts on keyboard presses
+    # @post The application ends if Escape is pressed
+    #
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Enter:
             self.equals_pressed()
         if event.key() == QtCore.Qt.Key_Escape:
             self.close()
 
+    ##
+    # @brief Erases the display
+    #
     def erase(self):
         self.input.setText("")
 
-    # prepared for implementation, here is where whole equation will be solved
+    ##
+    # @brief Passes the expression form display to mathlib and shows the result
+    #
     def equals_pressed(self):
         try:
             result = MerionesLib.parse_parentheses(self.input.text())

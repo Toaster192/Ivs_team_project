@@ -7,11 +7,15 @@
 #
 # This mathematical library consists of basic mathematical operations
 # such as sum, difference, multiplication or division, advanced mathematical
-# operations such as power, ..., logarithm,.... **DOPLNIT**
+# operations such as power, root, natural logarithm. This library also
+# includes some conversion functions such as convert_weight, convert_time
+# convert_degrees, convert_lenght
 #
 
 
+##
 # @brief Class for Meriones Math Library
+#
 class MerionesLib:
 
     ##
@@ -57,7 +61,7 @@ class MerionesLib:
     # @param b Second number, divisor
     #
     # @return Quotient of two numbers a and b
-    # @exceptions Ma ERROR In case the second number is zero, function will throw error Ma ERROR
+    # @exception Ma ERROR In case the second number is zero, function will throw error Ma ERROR
 
     @staticmethod
     def div(a, b):
@@ -75,6 +79,7 @@ class MerionesLib:
     # @param str_input The string input to be calculated
     # @param remains A list of unclosed braces (for recursion purposes, has default value)
     # @param deep A counter for how deep the recursion is going (to track if there are any leftover parentheses)
+    # @exception Syn Error if there is a different count of begining and ending parentheses
     # @return The value of the input calculated in proper order
 
     @staticmethod
@@ -139,11 +144,11 @@ class MerionesLib:
 
             elif c in braces.items() and len(remains) < 2:
                 print("Parentheses error (too many ending parentheses)")
-                raise ValueError('Ma ERROR')
+                raise ValueError('Syn Error')
 
         if not deep and remains:
             print("Parentheses error (too many beginning parentheses)")
-            raise ValueError('Ma ERROR')
+            raise ValueError('Syn Error')
 
         return str(MerionesLib.solve_expression(str_input))
 
@@ -151,6 +156,7 @@ class MerionesLib:
     # Method computes factorial of n
     #
     # @param n number of which factorial is calculated
+    # @exception Ma ERROR if the n parameter isn't an inteeger or is less then zero
     # @return factorial of number n
 
     @staticmethod
@@ -168,6 +174,7 @@ class MerionesLib:
     #
     # @param base base of the power
     # @param exponent exponent determines how many times the base will be multiplied
+    # @exception Ma ERROR if the exponent parameter isn't an inteeger or is less or equal to zero
     # @return base raised to the power
 
     @staticmethod
@@ -180,7 +187,10 @@ class MerionesLib:
     ##
     # Method calculates square root of n
     #
-    # @param n number of which square root will be calculate
+    # @param n the base for which the root will be calculated
+    # @param rvalue the exponent
+    # @exception Ma ERROR if the rvalue parameter is less or equal to zero or the n parameter
+    # is less then zero
     # @return square root of n
 
     @staticmethod
@@ -194,6 +204,7 @@ class MerionesLib:
     # Method calculates natural logarithm of x
     #
     # @param x number of which natural logarithm will be calculate
+    # @exception Ma ERROR if the x parameter  is less or equal to zero
     # @return natural logarithm of x
 
     @staticmethod
@@ -209,6 +220,7 @@ class MerionesLib:
     #
     # @param x number of kilograms
     # @param units units that user requested
+    # @exception Ma ERROR if the units parameter isn't one of mg, g, lb, t
     # @return number x converted to given units
 
     @staticmethod
@@ -230,6 +242,7 @@ class MerionesLib:
     #
     # @param x number of kilometers
     # @param units units that user requested
+    # @exception Ma ERROR if the units parameter isn't one of m, cm, mm, mi
     # @return number x converted to given units
 
     @staticmethod
@@ -251,6 +264,7 @@ class MerionesLib:
     #
     # @param x number of hours
     # @param units units that user requested
+    # @exception Ma ERROR if the units parameter isn't one of min, s, day
     # @return number x converted to given units
 
     @staticmethod
@@ -270,6 +284,7 @@ class MerionesLib:
     #
     # @param x number of celsius
     # @param units units that user requested
+    # @exception Ma ERROR if the units parameter isn't K or F
     # @return number x converted to given units
 
     @staticmethod
