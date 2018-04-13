@@ -34,5 +34,6 @@ if __name__ == '__main__':
     # string_input = get_numbers_testing(100000)
     string_input = ""
     string_input = input("Enter numbers for standard deviation (separated by a comma):")
-    string_input = str(string_input)[1:-1].replace(" ", "").split(',')
+    string_input = str(string_input).replace(
+        ")", "").replace("(", "").replace(" ", "").split(',')
     print(standard_deviation(string_input, len(string_input)))
