@@ -1,11 +1,28 @@
-Z přiložených grafů volání pro 10,100,1000 (a 100 000) čísel jde vidět, že nejdéle programu trvá rozparsovat závorky a samotné výrazy uvnitž závorek.
+In the attached graphs, we can see the calls for 10, 100, 1 000 and 100 000 numbers input.
+It is clearly visible that the functions,
+that take the longest to process are the parsing ones (parentheses and expressions)
 
-Tyto funkce jsou také nejrozlehlejší a obsahují vnořené fory, rekurzi a pod.
 
-Z krokování těchto programů jsme přišli na několik možných optimalizací které jsme doplnili, například odstranění mezer z výrazů (a tím ušetřit kroky při 'for character in string') 
+These functions are also the largest in terms of lines of code,
+and include things like nested for cycles and recursion.
 
-Také díky náhodnému generátoru čísel a dělení velkým číslem (při 100 000 číslech) jsme zjistili že čísla mohou poté být i ve formátu "5e-08" a tento případ jsme neměli ošetřený. 
 
-Pro optimalizaci jsem také rozdělil funkci 'parse_parentheses' na dvě funkce, jedna optimalizovaná která přijímá pouze "()" závorky (protože jiné na kalkulačce stejně nelze zadat) a méně optimalizovanou verzi která přijímá všechny druhy závorek.
+From debugging these functions we found a few possible optimizations which we then implemented,
+such as removing the whitespace from expressions and therefor decrease the amount of steps in:
+'for character in string:'
 
-Další optimalizace by mohla například být ukládání 'len' hodnoty kde je to možné, protože nyní je volána velice často (například pro 100 000 čísel je volána i více než 8 000 000 krát) nebo další optimalizace parsovacích funkcí.
+
+Because of the random numbers generator and division by large numbers (with 100 000 number input),
+we'he also discovered a bug where we didn't expect numbers to have the "5e-08" format and fixed it accordingly.
+
+
+For optimization purposes, I've also divided the 'parse_parentheses' function into two functions,
+one being optimized because of only using the '()' parentheses
+(which should be the only type possible to input through the calculator)
+and the other supporting other types of parentheses but being slightly slower as it shows,
+functions list.items() and list.keys() are fairly slow.
+
+
+Other possible optimizations may include saving the 'len' values where possible,
+because the 'len' function is called very often (for 100 000 numbers it's called over 8 000 000 times).
+Or more optimizations of the parsing functions.
