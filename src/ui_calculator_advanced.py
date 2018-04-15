@@ -14,7 +14,7 @@ class Ui_Advanced(object):
         Advanced.resize(443, 272)
         Advanced.setMinimumSize(QtCore.QSize(443, 272))
         Advanced.setMaximumSize(QtCore.QSize(443, 272))
-        Advanced.setStyleSheet("QWidget { background-color: rgb(165, 206, 255);} \n"
+        Advanced.setStyleSheet("QWidget { background-color: rgb(215, 215, 215);} \n"
 "\n"
 "")
         self.lineEdit = QtWidgets.QLineEdit(Advanced)
