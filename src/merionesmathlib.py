@@ -224,8 +224,24 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_weight(x, units):
-        if units == 'mg':
+    def convert_weight(x, units, original="kg"):
+        if original == 'kg':
+            x = x
+        elif original == 'mg':
+            x = x * 0.000001
+        elif original == 'g':
+            x = x * 0.001
+        elif original == 'lb':
+            x = x * 0.45359237
+        elif original == 't':
+            x = x * 1000
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
+
+        if units == 'kg':
+            return x
+        elif units == 'mg':
             return round(x * 1000 ** 2, 13)
         elif units == 'g':
             return round(x * 1000, 13)
@@ -233,6 +249,8 @@ class MerionesLib:
             return round(x * 2.20462262, 13)
         elif units == 't':
             return round(x * 0.001, 13)
+        elif units == 'kg':
+            return round(x, 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
@@ -246,15 +264,31 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_length(x, units):
-        if units == 'm':
+    def convert_length(x, units, original="km"):
+        if original == 'km':
+            x = x
+        elif original == 'm':
+            x = x * 0.001
+        elif original == 'cm':
+            x = x * 0.000001
+        elif original == 'mm':
+            x = x * 0.000000001
+        elif original == 'mi':
+            x = x * 1.609344
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
+
+        if units == 'km':
+            return round(x, 13)
+        elif units == 'm':
             return round(x * 1000, 13)
         elif units == 'cm':
             return round(x * 100000, 13)
         elif units == 'mm':
             return round(x * 1000**2, 13)
         elif units == 'mi':
-            return round(x * 0.62137199, 13)
+            return round(x * 0.62137119, 13)
         else:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
@@ -268,8 +302,22 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_time(x, units):
-        if units == 'min':
+    def convert_time(x, units, original="hrs"):
+        if original == 'hrs':
+            x = x
+        elif original == 'min':
+            x = float(x / 60)
+        elif original == 's':
+            x = float(x / 3600)
+        elif original == 'day':
+            x = x * 24
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
+
+        if units == 'hrs':
+            return round(x, 13)
+        elif units == 'min':
             return round(x * 60, 13)
         elif units == 's':
             return round(x * 3600, 13)
@@ -288,8 +336,20 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_degrees(x, units):
-        if units == 'K':
+    def convert_degrees(x, units, original="C"):
+        if original == 'C':
+            x = x
+        elif original == 'K':
+            x = x - 273.15
+        elif original == 'F':
+            x = (x - 32) * float(5/9)
+        else:
+            print("Error - wrong units!")
+            raise ValueError('Ma ERROR')
+
+        if units == 'C':
+            return round(x, 13)
+        elif units == 'K':
             return round(x + 273.15, 13)
         elif units == 'F':
             return round((x * 9/5) + 32, 13)
