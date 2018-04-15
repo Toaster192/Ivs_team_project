@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from calculator import CalculatorWindow
+from calculator import CalculatorWindow, Convertor
 
 app = QApplication(sys.argv)
 
