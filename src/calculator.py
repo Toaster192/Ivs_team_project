@@ -3,6 +3,7 @@ from ui_calculator import Ui_Calculator
 from ui_calculator_advanced import Ui_Advanced
 from merionesmathlib import MerionesLib
 from PyQt5.QtGui import *
+import os
 
 ##
 # @brief Class that serves as a bridge between GUI and merionesmathlib
@@ -22,7 +23,9 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.setupUi(self)
         self.show()
 
-        pixmap = QPixmap('icons8-hamster-50.png')
+        dirname = os.path.dirname(__file__)
+        icon = dirname + '/icons8-hamster-50.png'
+        pixmap = QPixmap(icon)
         self.mouse_2.resize(50, 30)
         self.mouse_2.move(3,0)
         self.mouse_2.setPixmap(pixmap)
@@ -48,6 +51,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.pushButton_root.clicked.connect(self.button_pressed)
 
         self.pushButton_cross.clicked.connect(self.erase)
+        self.mouse.clicked.connect(self.erase_last)
 
         self.pushButton_leftBracket.clicked.connect(self.button_pressed)
         self.pushButton_rightbracket.clicked.connect(self.button_pressed)
@@ -92,6 +96,13 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     #
     def erase(self):
         self.input.setText("")
+
+    ##
+    # @brief Erases the last character from display
+    #
+    def erase_last(self):
+        expression = self.input.text()
+        self.input.setText(expression[:-1])
 
     ##
     # @brief Passes the expression form display to mathlib and shows the result
