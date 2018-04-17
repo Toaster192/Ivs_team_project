@@ -1,6 +1,6 @@
 #Meriones Makefile
 
-.PHONY: all pip init pack clean test doc run installer
+.PHONY: all pip init pack packfolder clean test doc run installer
 
 vpath %.py ../tests
 
@@ -14,15 +14,23 @@ init:
 	pip3 install -r requirements.txt
     
 #zabali projekt tak aby mohl byt odevzdan
-pack: doc ../xchlup08_xkinst01_xsaran02_xwysog00.zip
-../xchlup08_xkinst01_xsaran02_xwysog00.zip:
-	mv ../../meriones ../../xchlup08_xkinst01_xsaran02_xwysog00
-	zip -r $@ ../../xchlup08_xkinst01_xsaran02_xwysog00
-	mv ../../xchlup08_xkinst01_xsaran02_xwysog00 ../../meriones	
+pack: doc packfolder meriones/xchlup08_xkinst01_xsaran02_xwysog00.zip
+meriones/xchlup08_xkinst01_xsaran02_xwysog00.zip:
+	rm -rf ../../xchlup08_xkinst01_xsaran02_xwysog00/repo/installer
+	rm -rf ../../xchlup08_xkinst01_xsaran02_xwysog00/repo/doc	
+	cd ../.. && zip -r $@ xchlup08_xkinst01_xsaran02_xwysog00
+	
+packfolder:
+	mkdir -p ../../xchlup08_xkinst01_xsaran02_xwysog00/repo
+	mkdir ../../xchlup08_xkinst01_xsaran02_xwysog00/installer
+	mkdir ../../xchlup08_xkinst01_xsaran02_xwysog00/doc
+	cp -a ../../meriones/. ../../xchlup08_xkinst01_xsaran02_xwysog00/repo/
+	cp -a ../doc/. ../../xchlup08_xkinst01_xsaran02_xwysog00/doc/
+	cp -a ../installer/. ../../xchlup08_xkinst01_xsaran02_xwysog00/installer/
 
 #smazen vsechny soubory, co nemaji byt odevzdany
-clean: ../installer/usr ../installer/DEBIAN
-	rm -rf $^
+clean: 
+	rm -rf ../installer/usr/ ../installer/DEBIAN/ ../../xchlup08_xkinst01_xsaran02_xwysog00
 
 #spusti testy matematicke knihovny
 test: merionesmathlib_tests.py
