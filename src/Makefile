@@ -29,3 +29,6 @@ doc: merionesmathlib.py
 #spusti program
 run: main.py
 	python3 main.py 
+
+installer: main.py merionesmathlib.py calculator.py ui_calculator_advanced.py ui_calculator.py requirements.txt
+	bash script.sh
