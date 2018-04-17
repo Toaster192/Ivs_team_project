@@ -25,8 +25,8 @@ clean: ../installer/usr ../installer/DEBIAN
 	rm -rf $^
 
 #spusti testy matematicke knihovny
-test: merioneslib_tests.py
-	cd .. && python3 -m $(patsubst ../tests/%.py,tests.%,$^)
+test: merionesmathlib_tests.py
+	cd .. && python3 -m src.merionesmathlib_tests
 
 #spusti generovani dokumentace
 doc: Doxyfile
