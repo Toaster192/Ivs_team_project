@@ -1,0 +1,6 @@
+Package: meriones-calculator
+Version: 1.0
+Maintainer: Meriones
+Architecture: all
+Description: Calculator by Meriones
+Depends: python3-pip
