@@ -14,11 +14,11 @@ init:
 	pip3 install -r requirements.txt
     
 #zabali projekt tak aby mohl byt odevzdan
-pack: doc ../xchlup08_xkinst02_xsaran02_xwysog00.zip
-../xchlup08_xkinst02_xsaran02_xwysog00.zip:
-	mv ../../meriones ../../xchlup08_xkinst02_xsaran02_xwysog00
-	zip -r $@ ../../xchlup08_xkinst02_xsaran02_xwysog00
-	mv ../../xchlup08_xkinst02_xsaran02_xwysog00 ../../meriones	
+pack: doc ../xchlup08_xkinst01_xsaran02_xwysog00.zip
+../xchlup08_xkinst01_xsaran02_xwysog00.zip:
+	mv ../../meriones ../../xchlup08_xkinst01_xsaran02_xwysog00
+	zip -r $@ ../../xchlup08_xkinst01_xsaran02_xwysog00
+	mv ../../xchlup08_xkinst01_xsaran02_xwysog00 ../../meriones	
 
 #smazen vsechny soubory, co nemaji byt odevzdany
 clean: ../installer/usr ../installer/DEBIAN
