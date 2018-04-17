@@ -171,3 +171,50 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
         self.comboBox_8.addItem("C")
         self.comboBox_8.addItem("K")
         self.comboBox_8.addItem("F")
+
+        self.pushButton.clicked.connect(self.convert)
+
+    def convert(self):
+        # weight
+        input_value = self.lineEdit.text()
+        if input_value != "":
+            input_units = self.comboBox.currentText()
+            result_units = self.comboBox_5.currentText()
+            try:
+                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+            except ValueError as e:
+                result = str(e)
+            self.label_2.setText(str(result))
+
+        # length
+        input_value = self.lineEdit_2.text()
+        if input_value != "":
+            input_units = self.comboBox_2.currentText()
+            result_units = self.comboBox_6.currentText()
+            try:
+                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+            except ValueError as e:
+                result = str(e)
+            self.label_3.setText(str(result))
+
+        # time
+        input_value = self.lineEdit_3.text()
+        if input_value != "":
+            input_units = self.comboBox_3.currentText()
+            result_units = self.comboBox_7.currentText()
+            try:
+                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+            except ValueError as e:
+                result = str(e)
+            self.label_4.setText(str(result))
+
+        # temperature
+        input_value = self.lineEdit_4.text()
+        if input_value != "":
+            input_units = self.comboBox_4.currentText()
+            result_units = self.comboBox_8.currentText()
+            try:
+                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+            except ValueError as e:
+                result = str(e)
+            self.label_5.setText(str(result))
