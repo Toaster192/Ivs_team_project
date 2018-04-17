@@ -20,8 +20,9 @@ pack: doc ../xchlup08_xkinst02_xsaran02_xwysog00.zip
 	zip -r $@ ../../xchlup08_xkinst02_xsaran02_xwysog00
 	mv ../../xchlup08_xkinst02_xsaran02_xwysog00 ../../meriones	
 
-#smazen vsechny soubory, co nemaji byt odevzdany ???
-clean:
+#smazen vsechny soubory, co nemaji byt odevzdany
+clean: ../installer/usr ../installer/DEBIAN
+	rm -rf $^
 
 #spusti testy matematicke knihovny
 test: merioneslib_tests.py
