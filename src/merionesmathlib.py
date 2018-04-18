@@ -66,7 +66,7 @@ class MerionesLib:
     @staticmethod
     def div(a, b):
         if not b:
-            print("Error - division by zero!")
+            # print("Error - division by zero!")
             raise ValueError('Ma ERROR')
         if a % b == 0:
             return a / b
@@ -102,11 +102,11 @@ class MerionesLib:
                 i = j+len(str(temp))-1
 
             elif c == ')' and len(remains) < 1:
-                print("Parentheses error (too many ending parentheses)")
+                # print("Parentheses error (too many ending parentheses)")
                 raise ValueError('Ma ERROR')
 
         if not deep and remains:
-            print("Parentheses error (too many beginning parentheses)")
+            # print("Parentheses error (too many beginning parentheses)")
             raise ValueError('Ma ERROR')
 
         return str(MerionesLib.solve_expression(str_input))
@@ -143,11 +143,11 @@ class MerionesLib:
                 i = j + len(str(temp)) - 1
 
             elif c in braces.items() and len(remains) < 2:
-                print("Parentheses error (too many ending parentheses)")
+                # print("Parentheses error (too many ending parentheses)")
                 raise ValueError('Syn Error')
 
         if not deep and remains:
-            print("Parentheses error (too many beginning parentheses)")
+            # print("Parentheses error (too many beginning parentheses)")
             raise ValueError('Syn Error')
 
         return str(MerionesLib.solve_expression(str_input))
@@ -162,7 +162,7 @@ class MerionesLib:
     @staticmethod
     def factorial(n):
         if type(n) != int or n < 0:
-            print("Error - wrong factorial number format!")
+            # print("Error - wrong factorial number format!")
             raise ValueError('Ma ERROR')
         if n == 0:
             return 1
@@ -180,7 +180,7 @@ class MerionesLib:
     @staticmethod
     def power(base, exponent):
         if type(exponent) != int or exponent <= 0:
-            print("Error - exponent has to be a positive integer!")
+            # print("Error - exponent has to be a positive integer!")
             raise ValueError('Ma ERROR')
         return round(base**exponent, 13)
 
@@ -196,7 +196,7 @@ class MerionesLib:
     @staticmethod
     def root(n, rvalue):
         if rvalue <= 0 or n < 0:
-            print("Error -both root values have to be a positive integer!")
+            # print("Error -both root values have to be a positive integer!")
             raise ValueError('Ma ERROR')
         return round(n ** (1 / float(rvalue)), 13)
 
@@ -210,7 +210,7 @@ class MerionesLib:
     @staticmethod
     def ln(x):
         if x <= 0:
-            print("Error - ln value has to be more than 0!")
+            # print("Error - ln value has to be more than 0!")
             raise ValueError('Ma ERROR')
         n = 100000000.0
         return round(n * ((x ** (1/n)) - 1), 13)
@@ -236,7 +236,7 @@ class MerionesLib:
         elif original == 't':
             x = x * 1000
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
         if units == 'kg':
@@ -252,7 +252,7 @@ class MerionesLib:
         elif units == 'kg':
             return round(x, 13)
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
     ##
@@ -276,7 +276,7 @@ class MerionesLib:
         elif original == 'mi':
             x = x * 1.609344
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
         if units == 'km':
@@ -290,7 +290,7 @@ class MerionesLib:
         elif units == 'mi':
             return round(x * 0.62137119, 13)
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
     ##
@@ -312,7 +312,7 @@ class MerionesLib:
         elif original == 'day':
             x = x * 24
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
         if units == 'h':
@@ -324,7 +324,7 @@ class MerionesLib:
         elif units == 'day':
             return round(float(x / 24), 13)
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
     ##
@@ -344,7 +344,7 @@ class MerionesLib:
         elif original == 'F':
             x = (x - 32) * float(5/9)
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
         if units == 'C':
@@ -354,7 +354,7 @@ class MerionesLib:
         elif units == 'F':
             return round((x * 9/5) + 32, 13)
         else:
-            print("Error - wrong units!")
+            # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
     ##
