@@ -13,6 +13,8 @@ import os
 # library which computes the result of the expression and then the CalculatorWindow shows
 # the result on the display
 #
+
+
 class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 
     ##
@@ -27,7 +29,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         icon = dirname + '/icons8-hamster-50.png'
         pixmap = QPixmap(icon)
         self.mouse_2.resize(50, 30)
-        self.mouse_2.move(3,0)
+        self.mouse_2.move(3, 0)
         self.mouse_2.setPixmap(pixmap)
 
         self.pushButton_zero.clicked.connect(self.button_pressed)
@@ -120,6 +122,8 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 #
 # User input number, in dropdown choose units and result is shown in the second box
 #
+
+
 class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
 
     ##
