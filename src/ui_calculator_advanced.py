@@ -101,6 +101,6 @@ class Ui_Advanced(object):
         self.lineEdit_2.setToolTip(_translate("Advanced", "<html><head/><body><p>Convert <a name=\"tts_button\"/>length</p></body></html>"))
         self.lineEdit_3.setToolTip(_translate("Advanced", "<html><head/><body><p>Convert time</p></body></html>"))
         self.lineEdit_4.setToolTip(_translate("Advanced", "<html><head/><body><p>Convert temperature</p></body></html>"))
-        self.label.setText(_translate("Advanced", "Welcome to MerionesConvertor"))
+        self.label.setText(_translate("Advanced", "Enter values to be converted:"))
         self.pushButton.setText(_translate("Advanced", "Convert"))
 

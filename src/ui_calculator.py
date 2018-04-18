@@ -216,7 +216,7 @@ class Ui_Calculator(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MerionesCalculator"))
         self.mouse.setToolTip(_translate("MainWindow", "<html><head/><body><p>Delete a character</p></body></html>"))
-        self.mouse.setText(_translate("MainWindow", "x"))
+        self.mouse.setText(_translate("MainWindow", "DEL"))
         self.pushButton_cross.setToolTip(_translate("MainWindow", "<html><head/><body><p>Delete all</p></body></html>"))
         self.pushButton_cross.setText(_translate("MainWindow", "C"))
         self.pushButton_rightbracket.setToolTip(_translate("MainWindow", "<html><head/><body><p>Left bracket"
@@ -239,7 +239,7 @@ class Ui_Calculator(object):
         self.pushButton_eight.setText(_translate("MainWindow", "8"))
         self.pushButton_factorial.setToolTip(_translate("MainWindow", "<html><head/><body><p>Factorial"
                                                                       "</p></body></html>"))
-        self.pushButton_factorial.setText(_translate("MainWindow", "!"))
+        self.pushButton_factorial.setText(_translate("MainWindow", "x!"))
         self.pushButton_nine.setText(_translate("MainWindow", "9"))
         self.pushButton_seven.setText(_translate("MainWindow", "7"))
         self.pushButton_dot.setToolTip(_translate("MainWindow", "<html><head/><body><p>Decimal point"
