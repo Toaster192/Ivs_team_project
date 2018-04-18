@@ -51,7 +51,7 @@ class Ui_Calculator(object):
                                                   "y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7); }")
         self.pushButton_leftBracket.setObjectName("pushButton_leftBracket")
         self.pushButton_two = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_two.setGeometry(QtCore.QRect(60, 170, 61, 61))
+        self.pushButton_two.setGeometry(QtCore.QRect(60, 290, 61, 61))
         self.pushButton_two.setToolTip("")
         self.pushButton_two.setToolTipDuration(0)
         self.pushButton_two.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed { "
@@ -67,7 +67,7 @@ class Ui_Calculator(object):
                                             "y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7); }")
         self.pushButton_power.setObjectName("pushButton_power")
         self.pushButton_three = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_three.setGeometry(QtCore.QRect(120, 170, 61, 61))
+        self.pushButton_three.setGeometry(QtCore.QRect(120, 290, 61, 61))
         self.pushButton_three.setToolTip("")
         self.pushButton_three.setToolTipDuration(0)
         self.pushButton_three.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed { "
@@ -75,7 +75,7 @@ class Ui_Calculator(object):
                                             "stop: 0 #dadbde, stop: 1 #f6f7fa); }")
         self.pushButton_three.setObjectName("pushButton_three")
         self.pushButton_one = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_one.setGeometry(QtCore.QRect(0, 170, 61, 61))
+        self.pushButton_one.setGeometry(QtCore.QRect(0, 290, 61, 61))
         self.pushButton_one.setToolTip("")
         self.pushButton_one.setToolTipDuration(0)
         self.pushButton_one.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed "
@@ -112,7 +112,7 @@ class Ui_Calculator(object):
                                            "stop: 0 #dadbde, stop: 1 #f6f7fa); }")
         self.pushButton_four.setObjectName("pushButton_four")
         self.pushButton_eight = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_eight.setGeometry(QtCore.QRect(60, 290, 61, 61))
+        self.pushButton_eight.setGeometry(QtCore.QRect(60, 170, 61, 61))
         self.pushButton_eight.setToolTipDuration(0)
         self.pushButton_eight.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed { "
                                             "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, "
@@ -127,7 +127,7 @@ class Ui_Calculator(object):
                                                 "stop: 0 #BEBEBE, stop: 1 #D7D7D7); }")
         self.pushButton_factorial.setObjectName("pushButton_factorial")
         self.pushButton_nine = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_nine.setGeometry(QtCore.QRect(120, 290, 61, 61))
+        self.pushButton_nine.setGeometry(QtCore.QRect(120, 170, 61, 61))
         self.pushButton_nine.setToolTipDuration(0)
         self.pushButton_nine.setAutoFillBackground(False)
         self.pushButton_nine.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed { "
@@ -135,7 +135,7 @@ class Ui_Calculator(object):
                                            "stop: 0 #dadbde, stop: 1 #f6f7fa); }")
         self.pushButton_nine.setObjectName("pushButton_nine")
         self.pushButton_seven = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_seven.setGeometry(QtCore.QRect(0, 290, 61, 61))
+        self.pushButton_seven.setGeometry(QtCore.QRect(0, 170, 61, 61))
         self.pushButton_seven.setToolTipDuration(0)
         self.pushButton_seven.setStyleSheet("QPushButton { border: 1px solid gray; } QPushButton:pressed { "
                                             "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, "
