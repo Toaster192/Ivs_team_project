@@ -302,8 +302,8 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_time(x, units, original="hrs"):
-        if original == 'hrs':
+    def convert_time(x, units, original="h"):
+        if original == 'h':
             x = x
         elif original == 'min':
             x = float(x / 60)
@@ -315,7 +315,7 @@ class MerionesLib:
             print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
-        if units == 'hrs':
+        if units == 'h':
             return round(x, 13)
         elif units == 'min':
             return round(x * 60, 13)

@@ -192,7 +192,7 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
             input_units = self.comboBox_2.currentText()
             result_units = self.comboBox_6.currentText()
             try:
-                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+                result = MerionesLib.convert_length(float(input_value), result_units, input_units)
             except ValueError as e:
                 result = str(e)
             self.label_3.setText(str(result))
@@ -203,7 +203,7 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
             input_units = self.comboBox_3.currentText()
             result_units = self.comboBox_7.currentText()
             try:
-                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+                result = MerionesLib.convert_time(float(input_value), result_units, input_units)
             except ValueError as e:
                 result = str(e)
             self.label_4.setText(str(result))
@@ -214,7 +214,7 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
             input_units = self.comboBox_4.currentText()
             result_units = self.comboBox_8.currentText()
             try:
-                result = MerionesLib.convert_weight(float(input_value), result_units, input_units)
+                result = MerionesLib.convert_degrees(float(input_value), result_units, input_units)
             except ValueError as e:
                 result = str(e)
             self.label_5.setText(str(result))
