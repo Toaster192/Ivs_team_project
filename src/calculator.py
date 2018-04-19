@@ -46,7 +46,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
         self.pushButton_plus.clicked.connect(self.button_pressed)
         self.pushButton_minus.clicked.connect(self.button_pressed)
         self.pushButton_division.clicked.connect(self.button_pressed)
-        self.pushButton_factorial.clicked.connect(self.button_pressed)
+        self.pushButton_factorial.clicked.connect(self.factorial_button_pressed)
         self.pushButton_ln.clicked.connect(self.button_pressed)
         self.pushButton_multiply.clicked.connect(self.button_pressed)
         self.pushButton_power.clicked.connect(self.button_pressed)
@@ -83,6 +83,20 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
             self.erase()
 
         expression = self.input.text() + button.text()
+
+        self.input.setText(expression)
+        self.input.setFocus(False)
+
+    ##
+    # @brief Appends the value "!" on the display
+    #
+    def factorial_button_pressed(self):
+        button = self.sender()
+
+        if self.input.text() == "Ma ERROR" or self.input.text() == "Syn Error":
+            self.erase()
+
+        expression = self.input.text() + "!"
 
         self.input.setText(expression)
         self.input.setFocus(False)
