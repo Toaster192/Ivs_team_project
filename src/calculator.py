@@ -78,6 +78,10 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     #
     def button_pressed(self):
         button = self.sender()
+
+        if self.input.text() == "Ma ERROR" or self.input.text() == "Syn Error":
+            self.erase()
+
         expression = self.input.text() + button.text()
 
         self.input.setText(expression)
@@ -88,8 +92,12 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     # @post The application ends if Escape is pressed
     #
     def keyPressEvent(self, event):
-        if event.key() == QtCore.Qt.Key_Enter:
+        if self.input.text() == "Ma ERROR" or self.input.text() == "Syn Error":
+            self.erase()
+
+        if event.key() == QtCore.Qt.Key_Enter or event.key() == QtCore.Qt.Key_Return:
             self.equals_pressed()
+
         if event.key() == QtCore.Qt.Key_Escape:
             self.close()
 
