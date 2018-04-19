@@ -270,9 +270,9 @@ class MerionesLib:
         elif original == 'm':
             x = x * 0.001
         elif original == 'cm':
-            x = x * 0.000001
+            x = x * 0.00001
         elif original == 'mm':
-            x = x * 0.000000001
+            x = x * 0.000001
         elif original == 'mi':
             x = x * 1.609344
         else:
