@@ -86,7 +86,7 @@ class MerionesLib:
     def parse_parentheses(str_input, remains=None, deep=0):
         if remains is None:
             remains = []
-            str_input.replace(" ", "")
+            str_input = str_input.replace(" ", "")
 
         # Can't use enumerate because I need to change the index
         i = -1
