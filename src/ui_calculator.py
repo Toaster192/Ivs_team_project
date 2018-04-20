@@ -215,41 +215,69 @@ class Ui_Calculator(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MerionesCalculator"))
-        self.mouse.setToolTip(_translate("MainWindow", "<html><head/><body><p>Delete a character</p></body></html>"))
+        self.mouse.setToolTip(_translate("MainWindow",
+                                         "<html><head/><body><p>Delete a character</p></body></html>"))
         self.mouse.setText(_translate("MainWindow", "DEL"))
-        self.pushButton_cross.setToolTip(_translate("MainWindow", "<html><head/><body><p>Delete all</p></body></html>"))
+        self.pushButton_cross.setToolTip(_translate("MainWindow",
+                                                    "<html><head/><body><p>Delete all</p></body></html>"))
         self.pushButton_cross.setText(_translate("MainWindow", "C"))
-        self.pushButton_rightbracket.setToolTip(_translate("MainWindow", "<html><head/><body><p>Left bracket"
-                                                                         "</p></body></html>"))
+        self.pushButton_rightbracket.setToolTip(_translate("MainWindow",
+                                                           "<html><head/><body><p>Left bracket"
+                                                           "</p></body></html>"))
         self.pushButton_rightbracket.setText(_translate("MainWindow", "("))
-        self.pushButton_leftBracket.setToolTip(_translate("MainWindow", "<html><head/><body><p>Right bracket"
-                                                                        "</p></body></html>"))
+        self.pushButton_leftBracket.setToolTip(_translate("MainWindow",
+                                                          "<html><head/><body><p>Right bracket"
+                                                          "</p></body></html>"))
         self.pushButton_leftBracket.setText(_translate("MainWindow", ")"))
         self.pushButton_two.setText(_translate("MainWindow", "2"))
-        self.pushButton_power.setToolTip(_translate("MainWindow", "<html><head/><body><p>Power</p></body></html>"))
+        self.pushButton_power.setToolTip(_translate("MainWindow",
+                                                    "<html><head/><body><p>Power<hr>"
+                                                    "Example: 2^3<br>"
+                                                    "Ranges: x^y<br>"
+                                                    "Where y is a positive integer."
+                                                    "</p></body></html>"))
         self.pushButton_power.setText(_translate("MainWindow", "^"))
         self.pushButton_three.setText(_translate("MainWindow", "3"))
         self.pushButton_one.setText(_translate("MainWindow", "1"))
         self.pushButton_five.setText(_translate("MainWindow", "5"))
-        self.pushButton_ln.setToolTip(_translate("MainWindow", "<html><head/><body><p>Natural logarithm"
-                                                               "</p></body></html>"))
+        self.pushButton_ln.setToolTip(_translate("MainWindow",
+                                                 "<html><head/><body><p>Natural logarithm<hr>"
+                                                 "Example: ln 4<br>"
+                                                 "Ranges: ln(x)<br>"
+                                                 "Where x is a positive number."
+                                                 "</p></body></html>"))
         self.pushButton_ln.setText(_translate("MainWindow", "ln"))
         self.pushButton_six.setText(_translate("MainWindow", "6"))
         self.pushButton_four.setText(_translate("MainWindow", "4"))
         self.pushButton_eight.setText(_translate("MainWindow", "8"))
-        self.pushButton_factorial.setToolTip(_translate("MainWindow", "<html><head/><body><p>Factorial"
-                                                                      "</p></body></html>"))
+        self.pushButton_factorial.setToolTip(_translate("MainWindow",
+                                                        "<html><head/><body><p>Factorial<hr>"
+                                                        "Example: 5!<br>"
+                                                        "Ranges: x!<br>"
+                                                        "Where x is an integer from 0 to 990<br>"
+                                                        "(both included)."
+                                                        "</p></body></html>"))
         self.pushButton_factorial.setText(_translate("MainWindow", "x!"))
         self.pushButton_nine.setText(_translate("MainWindow", "9"))
         self.pushButton_seven.setText(_translate("MainWindow", "7"))
-        self.pushButton_dot.setToolTip(_translate("MainWindow", "<html><head/><body><p>Decimal point"
-                                                                "</p></body></html>"))
+        self.pushButton_dot.setToolTip(_translate("MainWindow",
+                                                  "<html><head/><body><p>Decimal point"
+                                                  "</p></body></html>"))
         self.pushButton_dot.setText(_translate("MainWindow", "."))
         self.pushButton_zero.setText(_translate("MainWindow", "0"))
-        self.pushButton_root.setToolTip(_translate("MainWindow", "<html><head/><body><p>Square root</p></body></html>"))
+        self.pushButton_root.setToolTip(_translate("MainWindow", "<html><head/><body><p>Root<hr>"
+                                                                 "Example: 2√4<br>"
+                                                                 "Ranges: x√y<br>"
+                                                                 "Where x is a positive number (2 by default)<br>"
+                                                                 "and y is a positive number or 0."
+                                                                 "</p></body></html>"))
         self.pushButton_root.setText(_translate("MainWindow", "√"))
-        self.pushButton_division.setToolTip(_translate("MainWindow", "<html><head/><body><p>Division"
-                                                                     "</p></body></html>"))
+        self.pushButton_division.setToolTip(_translate("MainWindow",
+                                                       "<html><head/><body><p>Division<hr>"
+                                                       "Example: 6/2<br>"
+                                                       "Ranges: x÷y<br>"
+                                                       "Where y is not equal 0."
+                                                       "</p></body></html>"))
         self.pushButton_division.setStyleSheet(_translate("MainWindow", "QPushButton { background-color: "
                                                                         "rgb(255, 151, 57); color: white; "
                                                                         "border: 1px solid gray; } "
@@ -258,8 +286,10 @@ class Ui_Calculator(object):
                                                                         "y1: 0, x2: 0, y2: 1, stop: 0 #FF7832, "
                                                                         "stop: 1 #FF9739); }"))
         self.pushButton_division.setText(_translate("MainWindow", "÷"))
-        self.pushButton_minus.setToolTip(_translate("MainWindow", "<html><head/><body><p>Subtraction"
-                                                                  "</p></body></html>"))
+        self.pushButton_minus.setToolTip(_translate("MainWindow",
+                                                    "<html><head/><body><p>Subtraction<hr>"
+                                                    "Example: 6-3"
+                                                    "</p></body></html>"))
         self.pushButton_minus.setStyleSheet(_translate("MainWindow", "QPushButton { background-color: "
                                                                      "rgb(255, 151, 57); color: white; "
                                                                      "border: 1px solid gray; } QPushButton:pressed { "
@@ -267,7 +297,10 @@ class Ui_Calculator(object):
                                                                      "x2: 0, y2: 1, stop: 0 #FF7832, "
                                                                      "stop: 1 #FF9739); }"))
         self.pushButton_minus.setText(_translate("MainWindow", "-"))
-        self.pushButton_plus.setToolTip(_translate("MainWindow", "<html><head/><body><p>Addition</p></body></html>"))
+        self.pushButton_plus.setToolTip(_translate("MainWindow",
+                                                   "<html><head/><body><p>Addition<hr>"
+                                                   "Example: 2+5"
+                                                   "</p></body></html>"))
         self.pushButton_plus.setStyleSheet(_translate("MainWindow", "QPushButton { background-color: "
                                                                     "rgb(255, 151, 57); color: white; "
                                                                     "border: 1px solid gray; } QPushButton:pressed "
@@ -275,11 +308,14 @@ class Ui_Calculator(object):
                                                                     "x2: 0, y2: 1, stop: 0 #FF7832, "
                                                                     "stop: 1 #FF9739); }"))
         self.pushButton_plus.setText(_translate("MainWindow", "+"))
-        self.pushButton_equal.setToolTip(_translate("MainWindow", "<html><head/><body><p>Show result"
-                                                                  "</p></body></html>"))
+        self.pushButton_equal.setToolTip(_translate("MainWindow",
+                                                    "<html><head/><body><p>Show result"
+                                                    "</p></body></html>"))
         self.pushButton_equal.setText(_translate("MainWindow", "="))
-        self.pushButton_multiply.setToolTip(_translate("MainWindow", "<html><head/><body><p>Multiplication"
-                                                                     "</p></body></html>"))
+        self.pushButton_multiply.setToolTip(_translate("MainWindow",
+                                                       "<html><head/><body><p>Multiplication<hr>"
+                                                       "Example: 4*5"
+                                                       "</p></body></html>"))
         self.pushButton_multiply.setStyleSheet(_translate("MainWindow", "QPushButton { background-color: "
                                                                         "rgb(255, 151, 57); color: white; "
                                                                         "border: 1px solid gray; } "
@@ -288,6 +324,7 @@ class Ui_Calculator(object):
                                                                         "y1: 0, x2: 0, y2: 1, stop: 0 #FF7832, "
                                                                         "stop: 1 #FF9739); }"))
         self.pushButton_multiply.setText(_translate("MainWindow", "*"))
-        self.pushButton_convertor.setToolTip(_translate("MainWindow", "<html><head/><body><p>Open unit convertor"
-                                                                      "</p></body></html>"))
+        self.pushButton_convertor.setToolTip(_translate("MainWindow",
+                                                        "<html><head/><body><p>Open unit convertor"
+                                                        "</p></body></html>"))
         self.pushButton_convertor.setText(_translate("MainWindow", "Convertor"))
