@@ -196,7 +196,7 @@ class MerionesLib:
     @staticmethod
     def root(n, rvalue):
         if rvalue <= 0 or n < 0:
-            # print("Error -both root values have to be a positive integer!")
+            # print("Error - both root values have to be a positive number!")
             raise ValueError('Ma ERROR')
         return round(n ** (1 / float(rvalue)), 13)
 
