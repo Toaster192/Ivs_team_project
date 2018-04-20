@@ -463,10 +463,10 @@ class MerionesLibTestConvertDegrees(unittest.TestCase):
         self.assertEqual(self.math.convert_degrees(-50, "K"), 223.15)
 
     def test_convert_to_f(self):
-        self.assertEqual(self.math.convert_degrees(10, "F"), 50)
-        self.assertEqual(self.math.convert_degrees(0, "F"), 32)
-        self.assertEqual(self.math.convert_degrees(250, "F"), 482)
-        self.assertEqual(self.math.convert_degrees(-50, "F"), -58)
+        self.assertEqual(self.math.convert_degrees(10, "°F"), 50)
+        self.assertEqual(self.math.convert_degrees(0, "°F"), 32)
+        self.assertEqual(self.math.convert_degrees(250, "°F"), 482)
+        self.assertEqual(self.math.convert_degrees(-50, "°F"), -58)
 
 
 # Tests the parse_expression function

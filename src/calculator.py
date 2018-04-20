@@ -173,9 +173,9 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
         self.comboBox_3.addItem("s")
         self.comboBox_3.addItem("day")
 
-        self.comboBox_4.addItem("C")
+        self.comboBox_4.addItem("°C")
         self.comboBox_4.addItem("K")
-        self.comboBox_4.addItem("F")
+        self.comboBox_4.addItem("°F")
 
         self.comboBox_5.addItem("kg")
         self.comboBox_5.addItem("mg")
@@ -194,9 +194,9 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
         self.comboBox_7.addItem("s")
         self.comboBox_7.addItem("day")
 
-        self.comboBox_8.addItem("C")
+        self.comboBox_8.addItem("°C")
         self.comboBox_8.addItem("K")
-        self.comboBox_8.addItem("F")
+        self.comboBox_8.addItem("°F")
 
         self.pushButton.clicked.connect(self.convert)
 

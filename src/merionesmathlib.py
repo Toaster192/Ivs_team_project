@@ -336,22 +336,22 @@ class MerionesLib:
     # @return number x converted to given units
 
     @staticmethod
-    def convert_degrees(x, units, original="C"):
-        if original == 'C':
+    def convert_degrees(x, units, original="°C"):
+        if original == '°C':
             x = x
         elif original == 'K':
             x = x - 273.15
-        elif original == 'F':
+        elif original == '°F':
             x = (x - 32) * float(5/9)
         else:
             # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
 
-        if units == 'C':
+        if units == '°C':
             return round(x, 13)
         elif units == 'K':
             return round(x + 273.15, 13)
-        elif units == 'F':
+        elif units == '°F':
             return round((x * 9/5) + 32, 13)
         else:
             # print("Error - wrong units!")
