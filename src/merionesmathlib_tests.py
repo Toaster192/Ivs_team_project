@@ -401,7 +401,35 @@ class MerionesLibTestConvertWeight(unittest.TestCase):
         self.assertEqual(self.math.convert_weight(10, "t"), 0.01)
         self.assertEqual(self.math.convert_weight(0, "t"), 0)
         self.assertEqual(self.math.convert_weight(2.5, "t"), 0.0025)
-
+        
+    def test_convert_mg_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "kg", "mg"), 0.0001)
+        self.assertEqual(self.math.convert_weight(100, "mg", "mg"), 100)
+        self.assertEqual(self.math.convert_weight(100, "g", "mg"), 0.1)
+        self.assertEqual(self.math.convert_weight(100, "lb", "mg"), 0.000220462262)
+        self.assertEqual(self.math.convert_weight(100, "t", "mg"), 0.0000001)
+    
+    def test_convert_g_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "kg", "g"), 0.01)
+        self.assertEqual(self.math.convert_weight(100, "mg", "g"), 100000)
+        self.assertEqual(self.math.convert_weight(100, "g", "g"), 100)
+        self.assertEqual(self.math.convert_weight(100, "lb", "g"), 0.220462262)
+        self.assertEqual(self.math.convert_weight(100, "t", "g"), 0.0001)
+        
+    def test_convert_lb_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "kg", "lb"), 45.359237)
+        self.assertEqual(self.math.convert_weight(100, "mg", "lb"), 45359.237)
+        self.assertEqual(self.math.convert_weight(100, "g", "lb"), 45359237)
+        self.assertEqual(self.math.convert_weight(100, "lb", "lb"), 100)
+        self.assertEqual(self.math.convert_weight(100, "t", "lb"), 0.045359237)
+    
+    def test_convert_t_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "kg", "t"), 100000)
+        self.assertEqual(self.math.convert_weight(100, "mg", "t"), 100000000000)
+        self.assertEqual(self.math.convert_weight(100, "g", "t"), 100000000)
+        self.assertEqual(self.math.convert_weight(100, "lb", "t"), 220462.262)
+        self.assertEqual(self.math.convert_weight(100, "t", "t"), 100)
+            
 
 # Tests the convert_length function
 class MerionesLibTestConvertLength(unittest.TestCase):
