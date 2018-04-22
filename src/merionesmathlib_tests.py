@@ -508,20 +508,28 @@ class MerionesLibTestConvertTime(unittest.TestCase):
         
     def test_convert_day_to_other(self):
         self.assertEqual(self.math.convert_time(100, "day", "day"), 100)
+        self.assertEqual(self.math.convert_time(1, "h", "day"), 24)
         self.assertEqual(self.math.convert_time(100, "h", "day"), 2400)
         self.assertEqual(self.math.convert_time(100, "min", "day"), 144000)
         self.assertEqual(self.math.convert_time(100, "s", "day"), 8640000)
     
     def test_convert_min_to_other(self):
         self.assertEqual(self.math.convert_time(100, "day", "min"), 0.0694444444444)
+        self.assertEqual(self.math.convert_time(1440, "day", "min"), 1)
         self.assertEqual(self.math.convert_time(100, "h", "min"), 1.6666666666667)
+        self.assertEqual(self.math.convert_time(60, "h", "min"), 1)
+        self.assertEqual(self.math.convert_time(30, "h", "min"), 0.5)
         self.assertEqual(self.math.convert_time(100, "min", "min"), 100)
         self.assertEqual(self.math.convert_time(100, "s", "min"), 6000)
         
     def test_convert_s_to_other(self):
         self.assertEqual(self.math.convert_time(100, "day", "s"), 0.0011574074074)
+        self.assertEqual(self.math.convert_time(86400, "day", "s"), 1)
         self.assertEqual(self.math.convert_time(100, "h", "s"), 0.0277777777778)
+        self.assertEqual(self.math.convert_time(3600, "h", "s"), 1)
         self.assertEqual(self.math.convert_time(100, "min", "s"), 1.6666666666667)
+        self.assertEqual(self.math.convert_time(60, "min", "s"), 1)
+        self.assertEqual(self.math.convert_time(30, "min", "s"), 0.5)
         self.assertEqual(self.math.convert_time(100, "s", "s"), 100)
 
 
