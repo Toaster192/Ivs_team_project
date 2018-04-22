@@ -94,7 +94,7 @@ class Ui_Advanced(object):
 
     def retranslateUi(self, Advanced):
         _translate = QtCore.QCoreApplication.translate
-        Advanced.setWindowTitle(_translate("Advanced", "Form"))
+        Advanced.setWindowTitle(_translate("Advanced", "Convertor"))
         self.lineEdit.setToolTip(_translate("Advanced", "<html><head/><body><p>Convert weight"
                                                         "</p></body></html>"))
         self.lineEdit_2.setToolTip(_translate("Advanced", "<html><head/><body><p>"
