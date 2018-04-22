@@ -457,32 +457,32 @@ class MerionesLibTestConvertLength(unittest.TestCase):
         self.assertEqual(self.math.convert_length(2.5, "mm"), 2500000)
         
     def test_convert_m_to_other(self):
-        self.assertEqual(self.math.convert_weight(100, "km", "m"), 0.1)
-        self.assertEqual(self.math.convert_weight(100, "m", "m"), 100)
-        self.assertEqual(self.math.convert_weight(100, "cm", "m"), 10000)
-        self.assertEqual(self.math.convert_weight(100, "mi", "m"), 0.0621371192)
-        self.assertEqual(self.math.convert_weight(100, "mm", "m"), 100000)
+        self.assertEqual(self.math.convert_length(100, "km", "m"), 0.1)
+        self.assertEqual(self.math.convert_length(100, "m", "m"), 100)
+        self.assertEqual(self.math.convert_length(100, "cm", "m"), 10000)
+        self.assertEqual(self.math.convert_length(100, "mi", "m"), 0.0621371192)
+        self.assertEqual(self.math.convert_length(100, "mm", "m"), 100000)
     
     def test_convert_cm_to_other(self):
-        self.assertEqual(self.math.convert_weight(100, "km", "cm"), 0.001)
-        self.assertEqual(self.math.convert_weight(100, "m", "cm"), 1)
-        self.assertEqual(self.math.convert_weight(100, "cm", "cm"), 100)
-        self.assertEqual(self.math.convert_weight(100, "mi", "cm"), 0.000621371192)
-        self.assertEqual(self.math.convert_weight(100, "mm", "cm"), 1000)
+        self.assertEqual(self.math.convert_length(100, "km", "cm"), 0.001)
+        self.assertEqual(self.math.convert_length(100, "m", "cm"), 1)
+        self.assertEqual(self.math.convert_length(100, "cm", "cm"), 100)
+        self.assertEqual(self.math.convert_length(100, "mi", "cm"), 0.000621371192)
+        self.assertEqual(self.math.convert_length(100, "mm", "cm"), 1000)
     
     def test_convert_mi_to_other(self):
-        self.assertEqual(self.math.convert_weight(100, "km", "mi"), 160.9344)
-        self.assertEqual(self.math.convert_weight(100, "m", "mi"), 160934.4)
-        self.assertEqual(self.math.convert_weight(100, "cm", "mi"), 16093440)
-        self.assertEqual(self.math.convert_weight(100, "mi", "mi"), 100)
-        self.assertEqual(self.math.convert_weight(100, "mm", "mi"), 160934400)
+        self.assertEqual(self.math.convert_length(100, "km", "mi"), 160.9344)
+        self.assertEqual(self.math.convert_length(100, "m", "mi"), 160934.4)
+        self.assertEqual(self.math.convert_length(100, "cm", "mi"), 16093440)
+        self.assertEqual(self.math.convert_length(100, "mi", "mi"), 100)
+        self.assertEqual(self.math.convert_length(100, "mm", "mi"), 160934400)
     
     def test_convert_mm_to_other(self):
-        self.assertEqual(self.math.convert_weight(100, "km", "mm"), 0.001)
-        self.assertEqual(self.math.convert_weight(100, "m", "mm"), 0.1)
-        self.assertEqual(self.math.convert_weight(100, "cm", "mm"), 10)
-        self.assertEqual(self.math.convert_weight(100, "mi", "mm"), 0.0000621371192)
-        self.assertEqual(self.math.convert_weight(100, "mm", "mm"), 100)
+        self.assertEqual(self.math.convert_length(100, "km", "mm"), 0.0001)
+        self.assertEqual(self.math.convert_length(100, "m", "mm"), 0.1)
+        self.assertEqual(self.math.convert_length(100, "cm", "mm"), 10)
+        self.assertEqual(self.math.convert_length(100, "mi", "mm"), 0.0000621371192)
+        self.assertEqual(self.math.convert_length(100, "mm", "mm"), 100)
 
 
 # Tests the convert_time function
@@ -505,6 +505,25 @@ class MerionesLibTestConvertTime(unittest.TestCase):
         self.assertEqual(self.math.convert_time(0, "day"), 0)
         self.assertEqual(self.math.convert_time(24, "day"), 1)
         self.assertAlmostEqual(self.math.convert_time(245, "day"), 10.2083, 4)
+        
+    def test_convert_day_to_other(self):
+        self.assertEqual(self.math.convert_time(100, "day", "day"), 100)
+        self.assertEqual(self.math.convert_time(100, "h", "day"), 2400)
+        self.assertEqual(self.math.convert_time(100, "min", "day"), 144000)
+        self.assertEqual(self.math.convert_time(100, "s", "day"), 8640000)
+    
+    def test_convert_min_to_other(self):
+        self.assertEqual(self.math.convert_time(100, "day", "min"), 0.0694444444444)
+        self.assertEqual(self.math.convert_time(100, "h", "min"), 1.6666666666667)
+        self.assertEqual(self.math.convert_time(100, "min", "min"), 100)
+        self.assertEqual(self.math.convert_time(100, "s", "min"), 6000)
+        
+    def test_convert_s_to_other(self):
+        self.assertEqual(self.math.convert_time(100, "day", "s"), 0.0011574074074)
+        self.assertEqual(self.math.convert_time(100, "h", "s"), 0.0277777777778)
+        self.assertEqual(self.math.convert_time(100, "min", "s"), 1.6666666666667)
+        self.assertEqual(self.math.convert_time(100, "s", "s"), 100)
+
 
 
 # Tests the convert_degrees function
