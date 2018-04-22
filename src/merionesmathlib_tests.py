@@ -410,7 +410,7 @@ class MerionesLibTestConvertWeight(unittest.TestCase):
         self.assertEqual(self.math.convert_weight(100, "t", "mg"), 0.0000001)
     
     def test_convert_g_to_other(self):
-        self.assertEqual(self.math.convert_weight(100, "kg", "g"), 0.01)
+        self.assertEqual(self.math.convert_weight(100, "kg", "g"), 0.1)
         self.assertEqual(self.math.convert_weight(100, "mg", "g"), 100000)
         self.assertEqual(self.math.convert_weight(100, "g", "g"), 100)
         self.assertEqual(self.math.convert_weight(100, "lb", "g"), 0.220462262)
@@ -418,8 +418,8 @@ class MerionesLibTestConvertWeight(unittest.TestCase):
         
     def test_convert_lb_to_other(self):
         self.assertEqual(self.math.convert_weight(100, "kg", "lb"), 45.359237)
-        self.assertEqual(self.math.convert_weight(100, "mg", "lb"), 45359.237)
-        self.assertEqual(self.math.convert_weight(100, "g", "lb"), 45359237)
+        self.assertEqual(self.math.convert_weight(100, "mg", "lb"), 45359237)
+        self.assertEqual(self.math.convert_weight(100, "g", "lb"), 45359.237)
         self.assertEqual(self.math.convert_weight(100, "lb", "lb"), 100)
         self.assertEqual(self.math.convert_weight(100, "t", "lb"), 0.045359237)
     
@@ -455,6 +455,34 @@ class MerionesLibTestConvertLength(unittest.TestCase):
         self.assertEqual(self.math.convert_length(10, "mm"), 10000000)
         self.assertEqual(self.math.convert_length(0, "mm"), 0)
         self.assertEqual(self.math.convert_length(2.5, "mm"), 2500000)
+        
+    def test_convert_m_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "km", "m"), 0.1)
+        self.assertEqual(self.math.convert_weight(100, "m", "m"), 100)
+        self.assertEqual(self.math.convert_weight(100, "cm", "m"), 10000)
+        self.assertEqual(self.math.convert_weight(100, "mi", "m"), 0.0621371192)
+        self.assertEqual(self.math.convert_weight(100, "mm", "m"), 100000)
+    
+    def test_convert_cm_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "km", "cm"), 0.001)
+        self.assertEqual(self.math.convert_weight(100, "m", "cm"), 1)
+        self.assertEqual(self.math.convert_weight(100, "cm", "cm"), 100)
+        self.assertEqual(self.math.convert_weight(100, "mi", "cm"), 0.000621371192)
+        self.assertEqual(self.math.convert_weight(100, "mm", "cm"), 1000)
+    
+    def test_convert_mi_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "km", "mi"), 160.9344)
+        self.assertEqual(self.math.convert_weight(100, "m", "mi"), 160934.4)
+        self.assertEqual(self.math.convert_weight(100, "cm", "mi"), 16093440)
+        self.assertEqual(self.math.convert_weight(100, "mi", "mi"), 100)
+        self.assertEqual(self.math.convert_weight(100, "mm", "mi"), 160934400)
+    
+    def test_convert_mm_to_other(self):
+        self.assertEqual(self.math.convert_weight(100, "km", "mm"), 0.001)
+        self.assertEqual(self.math.convert_weight(100, "m", "mm"), 0.1)
+        self.assertEqual(self.math.convert_weight(100, "cm", "mm"), 10)
+        self.assertEqual(self.math.convert_weight(100, "mi", "mm"), 0.0000621371192)
+        self.assertEqual(self.math.convert_weight(100, "mm", "mm"), 100)
 
 
 # Tests the convert_time function
