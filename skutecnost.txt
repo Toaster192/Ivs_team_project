@@ -1,4 +1,14 @@
-xchlup08 X
-xkinst01 X
-xsaran02 X
-xwysog00 X
+MERIONES - xchlup08, xkinst01, xsaran02, xwysog00
+
+ROZDÍLY MEZI SKUTEČNOSTÍ A PLÁNEM
+
+1. Nepodařilo se nám úplně dodržet TDD, protože se některé testy udělaly až po
+vytvoření testovaných celků. (např. základní operace)
+
+2. Rozdělení funkcí nebylo striktně dodržováno a někteří členové týmu dělali i
+jiné věci, než původně měli, což bylo způsobeno nepředpokládanou časovou náročností
+některých úloh.
+
+3. Makefile nebyl vytvořen včas z důvodu neznalosti budoucí struktury repozitáře.
+
+4. Neplnění deadlinů, některé deadliny byly splněny až o den/několik dní později.
