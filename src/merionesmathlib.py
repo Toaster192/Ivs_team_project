@@ -226,6 +226,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_weight(x, units, original="kg"):
+        if original == units:
+            return x
+
         if original == 'kg':
             x = x
         elif original == 'mg':
@@ -267,6 +270,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_length(x, units, original="km"):
+        if original == units:
+            return x
+
         if original == 'km':
             x = x
         elif original == 'm':
@@ -306,6 +312,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_time(x, units, original="h"):
+        if original == units:
+            return x
+
         if original == 'h':
             x = x
         elif original == 'min':
@@ -341,6 +350,9 @@ class MerionesLib:
 
     @staticmethod
     def convert_degrees(x, units, original="°C"):
+        if original == units:
+            return x
+
         if original == '°C':
             x = x
         elif original == 'K':
