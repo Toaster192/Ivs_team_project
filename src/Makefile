@@ -38,6 +38,7 @@ test: merionesmathlib_tests.py
 
 #spusti generovani dokumentace
 doc: Doxyfile
+	cd .. && rm -rf doc
 	cd .. && mkdir doc && cd doc && doxygen ../src/$^
 
 #spusti program
