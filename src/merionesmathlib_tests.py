@@ -493,14 +493,14 @@ class MerionesLibTestConvertLength(unittest.TestCase):
         self.assertEqual(self.math.convert_length(100, "km", "m"), 0.1)
         self.assertEqual(self.math.convert_length(100, "m", "m"), 100)
         self.assertEqual(self.math.convert_length(100, "cm", "m"), 10000)
-        self.assertEqual(self.math.convert_length(100, "mi", "m"), 0.0621371192)
+        self.assertEqual(self.math.convert_length(100, "mi", "m"), 0.06213711922)
         self.assertEqual(self.math.convert_length(100, "mm", "m"), 100000)
     
     def test_convert_cm_to_other(self):
         self.assertEqual(self.math.convert_length(100, "km", "cm"), 0.001)
         self.assertEqual(self.math.convert_length(100, "m", "cm"), 1)
         self.assertEqual(self.math.convert_length(100, "cm", "cm"), 100)
-        self.assertEqual(self.math.convert_length(100, "mi", "cm"), 0.000621371192)
+        self.assertEqual(self.math.convert_length(100, "mi", "cm"), 0.0006213711922)
         self.assertEqual(self.math.convert_length(100, "mm", "cm"), 1000)
     
     def test_convert_mi_to_other(self):
@@ -591,7 +591,7 @@ class MerionesLibTestConvertDegrees(unittest.TestCase):
         
     def test_convert_f_to_other(self):
         self.assertEqual(self.math.convert_degrees(100, "°C", "°F"), 37.7777777777778)
-        self.assertEqual(self.math.convert_degrees(100, "K", "°F"), 310.92777777777778)
+        self.assertEqual(self.math.convert_degrees(100, "K", "°F"), 310.9277777777777)
         self.assertEqual(self.math.convert_degrees(100, "°F", "°F"), 100)
 
 

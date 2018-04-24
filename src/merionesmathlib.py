@@ -244,7 +244,7 @@ class MerionesLib:
             raise ValueError('Ma ERROR')
 
         if units == 'kg':
-            return x
+            return round(x, 13)
         elif units == 'mg':
             return round(x * 1000 ** 2, 13)
         elif units == 'g':
@@ -290,13 +290,13 @@ class MerionesLib:
         if units == 'km':
             return round(x, 13)
         elif units == 'm':
-            return round(x * 1000, 13)
+            return round(x * 10000 / 10, 13)  # * 1000 did some stupid rounding problems
         elif units == 'cm':
-            return round(x * 100000, 13)
+            return round(x * 10000 * 10, 13)  # same with * 100000
         elif units == 'mm':
             return round(x * 1000**2, 13)
         elif units == 'mi':
-            return round(x * 0.62137119, 13)
+            return round(x * 0.6213711922, 13)
         else:
             # print("Error - wrong units!")
             raise ValueError('Ma ERROR')
