@@ -1,4 +1,4 @@
-xchlup08 X
-xkinst01 X
-xsaran02 X
-xwysog00 X
+xchlup08 100 (repozitář, rozšiřující funkce, GUI)
+xkinst01 100 (trello, profilling, závorky, PEP)
+xsaran02 100 (základní operace, manuál, testování funkčnosti, Makefile)
+xwysog00 100 (kontrola dokumentace, přednosti operací, ovládání kalkulačky, testy)
