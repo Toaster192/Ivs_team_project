@@ -69,7 +69,11 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
 
         self.pushButton_convertor.clicked.connect(self.on_button_pressed)
 
+    ##
+    # @brief Shows the Convertor window, when the appropriate button is pressed
+    #
     def on_button_pressed(self):
+        ## Instance of Convertor
         self.second = Convertor()
         self.second.show()
 
@@ -104,6 +108,7 @@ class CalculatorWindow(QtWidgets.QMainWindow, Ui_Calculator):
     ##
     # @brief Reacts on keyboard presses
     # @post The application ends if Escape is pressed
+    # @return Whatever the Qt5 wants to return, take a look at PyQt5 documentation
     #
     def keyPressEvent(self, event):
         if self.input.text() == "Ma ERROR" or self.input.text() == "Syn Error":
@@ -200,6 +205,9 @@ class Convertor(QtWidgets.QMainWindow, Ui_Advanced):
 
         self.pushButton.clicked.connect(self.convert)
 
+    ##
+    # @brief Takes values entered by user to Converter, calls conversion functions and outputs the result back
+    #
     def convert(self):
         # weight
         input_value = self.lineEdit.text()

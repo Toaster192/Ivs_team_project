@@ -220,6 +220,7 @@ class MerionesLib:
     #
     # @param x number of kilograms
     # @param units units that user requested
+    # @param original Units to convert from, default = kg
     # @exception Ma ERROR if the units parameter isn't one of mg, g, lb, t
     # @return number x converted to given units
 
@@ -260,6 +261,7 @@ class MerionesLib:
     #
     # @param x number of kilometers
     # @param units units that user requested
+    # @param original Units to convert from, default = km
     # @exception Ma ERROR if the units parameter isn't one of m, cm, mm, mi
     # @return number x converted to given units
 
@@ -298,6 +300,7 @@ class MerionesLib:
     #
     # @param x number of hours
     # @param units units that user requested
+    # @param original Units to convert from, default = h
     # @exception Ma ERROR if the units parameter isn't one of min, s, day
     # @return number x converted to given units
 
@@ -332,6 +335,7 @@ class MerionesLib:
     #
     # @param x number of celsius
     # @param units units that user requested
+    # @param original Units to convert from, default = °C
     # @exception Ma ERROR if the units parameter isn't K or F
     # @return number x converted to given units
 
