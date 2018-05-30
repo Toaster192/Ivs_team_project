@@ -17,7 +17,10 @@
 # @brief Class for Meriones Math Library
 #
 class MerionesLib:
-
+    
+    pi = 3.1415926535898 # pi to 13 digits
+    e  = 2.7182818284590 # e to 13 digits
+    
     ##
     # @brief Sum of two numbers
     #
@@ -156,11 +159,13 @@ class MerionesLib:
     # Method computes factorial of n
     #
     # @param n number of which factorial is calculated
-    # @exception Ma ERROR if the n parameter isn't an inteeger or is less then zero
+    # @exception Ma ERROR if the n parameter isn't an integer or is less than 0 or greater than 990
     # @return factorial of number n
 
     @staticmethod
     def factorial(n):
+        #if (type(n) != int or n < 0) and n < 990 and n > -990: Removed until gamma function is fixed
+        #    return MerionesLib.gamma(n)
         if type(n) != int or n < 0 or n > 990:
             # print("Error - wrong factorial number format!")
             raise ValueError('Ma ERROR')
@@ -203,7 +208,7 @@ class MerionesLib:
     ##
     # Method calculates natural logarithm of x
     #
-    # @param x number of which natural logarithm will be calculate
+    # @param x number of which natural logarithm will be calculated
     # @exception Ma ERROR if the x parameter  is less or equal to zero
     # @return natural logarithm of x
 
@@ -214,6 +219,89 @@ class MerionesLib:
             raise ValueError('Ma ERROR')
         n = 100000000.0
         return round(n * ((x ** (1/n)) - 1), 13)
+
+    ##
+    # Method calculates sin of x using Taylor series
+    #
+    # @param x number of which sin will be calculated
+    # @return sin of x
+    
+    @staticmethod
+    def sin(x):
+        y = 0
+        sign = 1
+        for i in range(20):
+            y += sign*(x**(i*2+1)/MerionesLib.factorial(i*2+1))
+            sign *= -1 # flip sign
+        return round(y, 13)
+
+    ##
+    # Method calculates cos of x using Taylor series
+    #
+    # @param x number of which cos will be calculated
+    # @return cos of x
+    
+    @staticmethod
+    def cos(x):
+        y = 0
+        sign = 1
+        for i in range(20):
+            y += sign*(x**(i*2)/MerionesLib.factorial(i*2))
+            sign *= -1 # flip sign
+        return round(y, 13)
+
+    ##
+    # Method calculates tan of x
+    #
+    # @param x number of which tan will be calculated
+    # @return tan of x
+
+    @staticmethod
+    def tan(x):
+        return round(MerionesLib.sin(x)/MerionesLib.cos(x), 13)
+
+    ##
+    # Method calculates exp of x using Taylor series
+    #
+    # @param x number of which exp will be calculated
+    # @return exp of x
+    
+    @staticmethod
+    def exp(x):
+        y = 0
+        for i in range(20):
+            y += x**i/MerionesLib.factorial(i)
+        return round(y, 13)
+
+    ##
+    # Method calculated gamma function of x using Lanczos approximation (Not working)
+    # https://en.wikipedia.org/wiki/Lanczos_approximation
+    #
+    # @param x number of which the gamma function will be calculated
+    # @return gamma of x
+    
+    gamma_p = [676.5203681218851
+        ,-1259.1392167224028
+        ,771.32342877765313
+        ,-176.61502916214059
+        ,12.507343278686905
+        ,-0.13857109526572012
+        ,9.9843695780195716e-6
+        ,1.5056327351493116e-7
+    ]
+
+    #TODO: fix double overflow error
+    def gamma(x):
+        if x < 0.5:
+            y = MerionesLib.pi / (MerionesLib.sin(MerionesLib.pi*x) * MerionesLib.gamma(1-x)) ### Reflection formula 
+        else:
+            x -= 1
+            z = 0.99999999999980993
+            for (i, pval) in enumerate(MerionesLib.gamma_p):
+                x += pval / (x+i+1)
+            t = x + len(MerionesLib.gamma_p) - 0.5
+            y = MerionesLib.root(2*MerionesLib.pi, 2) * t**(x+0.5) * MerionesLib.exp(-t) * z # OverflowError: (34, 'Numerical result out of range')
+        return round(y, 13)
 
     ##
     # Method converts number x to units given by parameter units
@@ -413,31 +501,31 @@ class MerionesLib:
 
         # concatenate numbers that are writen in format like "126e+145"
         for index, item in enumerate(result):
-            if "e" in item:
+            if item[-1]=="e" and item != "e":
                 result[index:index + 3] = [''.join(result[index:index + 3])]
 
         # check the parsed expression for syntactic errors
         for index, item in enumerate(result):
             # check for operators on the begining or end of expression
             if item in operators:
-                if index == 0 and item != "ln" and item != "√":
+                if index == 0 and item not in ["ln", "sin", "cos", "tan", "exp", "√"]:
                     raise ValueError("Syn Error")
                 if index == len(result) - 1 and item != "!":
                     raise ValueError("Syn Error")
 
             # check for forbidden double operators
             if item in operators and result[index - 1] in operators:
-                if index > 0 and result[index - 1] != "!" and item != "ln" and item != "√":
+                if index > 0 and result[index - 1] != "!" and item not in ["ln", "sin", "cos", "tan", "exp", "√"]:
                     raise ValueError("Syn Error")
 
             # check if there is an operator after ! and before ln
             if item == "!" and index < len(result) - 1 and result[index + 1] not in operators:
                 raise ValueError("Syn Error")
 
-            if item == "ln" and index > 0 and result[index - 1] not in operators:
+            if item in ["ln", "sin", "cos", "tan", "exp"] and index > 0 and result[index - 1] not in operators:
                 raise ValueError("Syn Error")
 
-            if item not in operators:
+            if item not in operators and item not in ['pi', 'e']:
                 # check if it is a valid number
                 try:
                     float(item)
@@ -456,6 +544,10 @@ class MerionesLib:
     @staticmethod
     def str_to_num(s):
         try:
+            if s=='e':
+                return MerionesLib.e
+            if s=='pi':
+                return MerionesLib.pi
             if 'e' in s:
                 return float(s)
             number = s.split(".")
@@ -475,10 +567,10 @@ class MerionesLib:
 
     @staticmethod
     def solve_expression(expr):
-        operators = ["ln", "!", "√", "^", "pow", "÷", "x", "*", "/", "+", "-"]
+        operators = ["ln", "!", "√", "^", "pow", "÷", "*", "/", "+", "-", "sin", "cos", "tan", "exp"]
         expression = MerionesLib.parse_expression(expr, operators)
 
-        operator_precedence = [["ln"], ["!"], ["^", "pow", "√"], ["÷", "x", "*", "/"], ["+", "-"]]
+        operator_precedence = [["ln", "sin", "cos", "tan", "exp"], ["!"], ["^", "pow", "√"], ["÷", "*", "/"], ["+", "-"]]
         for operator in operator_precedence:
             index = 0
             while index < len(expression):
@@ -496,7 +588,7 @@ class MerionesLib:
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "*" or item == "x":
+                    elif item == "*":
                         result = [str(MerionesLib.mul(MerionesLib.str_to_num(expression[index - 1]),
                                                       MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
@@ -531,6 +623,22 @@ class MerionesLib:
 
                     elif item == "ln":
                         result = [str(MerionesLib.ln(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "sin":
+                        result = [str(MerionesLib.sin(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "cos":
+                        result = [str(MerionesLib.cos(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "tan":
+                        result = [str(MerionesLib.tan(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "exp":
+                        result = [str(MerionesLib.exp(MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index:index + 2] = result
 
                 index += 1
