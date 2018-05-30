@@ -12,7 +12,6 @@
 # convert_degrees, convert_lenght
 #
 
-from math import gamma
 
 ##
 # @brief Class for Meriones Math Library
