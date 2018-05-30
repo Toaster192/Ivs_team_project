@@ -17,7 +17,10 @@
 # @brief Class for Meriones Math Library
 #
 class MerionesLib:
-
+    
+    pi = 3.1415926535898 # pi to 13 digits
+    e  = 2.7182818284590 # e to 13 digits
+    
     ##
     # @brief Sum of two numbers
     #
@@ -228,7 +231,7 @@ class MerionesLib:
         y = 0
         sign = 1
         for i in range(20):
-            y += sign*(MerionesLib.power(x, i*2+1)/MerionesLib.factorial(i*2+1))
+            y += sign*(x**(i*2+1)/MerionesLib.factorial(i*2+1))
             sign *= -1 # flip sign
         return round(y, 13)
 
@@ -243,7 +246,7 @@ class MerionesLib:
         y = 0
         sign = 1
         for i in range(20):
-            y += sign*(MerionesLib.power(x, i*2)/MerionesLib.factorial(i*2))
+            y += sign*(x**(i*2)/MerionesLib.factorial(i*2))
             sign *= -1 # flip sign
         return round(y, 13)
 
@@ -267,11 +270,12 @@ class MerionesLib:
     def exp(x):
         y = 0
         for i in range(20):
-            y += sign*(MerionesLib.power(x, i)/MerionesLib.factorial(i))
+            y += x**i/MerionesLib.factorial(i)
         return round(y, 13)
 
     ##
     # Method calculated gamma function of x using Lanczos approximation (Not working)
+    # https://en.wikipedia.org/wiki/Lanczos_approximation
     #
     # @param x number of which the gamma function will be calculated
     # @return gamma of x
@@ -288,16 +292,15 @@ class MerionesLib:
 
     #TODO: fix double overflow error
     def gamma(x):
-        pi = 3.1415926535898
         if x < 0.5:
-            y = pi / (MerionesLib.sin(pi*x) * MerionesLib.gamma(1-x)) ### Reflection formula 
+            y = MerionesLib.pi / (MerionesLib.sin(MerionesLib.pi*x) * MerionesLib.gamma(1-x)) ### Reflection formula 
         else:
             x -= 1
             z = 0.99999999999980993
             for (i, pval) in enumerate(MerionesLib.gamma_p):
                 x += pval / (x+i+1)
             t = x + len(MerionesLib.gamma_p) - 0.5
-            y = MerionesLib.root(2*pi, 2) * t**(x+0.5) * MerionesLib.exp(-t) * z # OverflowError: (34, 'Numerical result out of range')
+            y = MerionesLib.root(2*MerionesLib.pi, 2) * t**(x+0.5) * MerionesLib.exp(-t) * z # OverflowError: (34, 'Numerical result out of range')
         return round(y, 13)
 
     ##
