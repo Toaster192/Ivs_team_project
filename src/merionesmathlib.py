@@ -501,7 +501,7 @@ class MerionesLib:
 
         # concatenate numbers that are writen in format like "126e+145"
         for index, item in enumerate(result):
-            if "e" in item:
+            if "e" in item and item != "e":
                 result[index:index + 3] = [''.join(result[index:index + 3])]
 
         # check the parsed expression for syntactic errors
@@ -525,7 +525,7 @@ class MerionesLib:
             if item == "ln" and index > 0 and result[index - 1] not in operators:
                 raise ValueError("Syn Error")
 
-            if item not in operators:
+            if item not in operators and item not in ['pi', 'e']:
                 # check if it is a valid number
                 try:
                     float(item)
@@ -544,6 +544,10 @@ class MerionesLib:
     @staticmethod
     def str_to_num(s):
         try:
+            if s=='e':
+                return MerionesLib.e
+            if s=='pi':
+                return MerionesLib.pi
             if 'e' in s:
                 return float(s)
             number = s.split(".")
