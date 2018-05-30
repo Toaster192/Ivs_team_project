@@ -156,7 +156,7 @@ class MerionesLib:
     # Method computes factorial of n
     #
     # @param n number of which factorial is calculated
-    # @exception Ma ERROR if the n parameter is less then -990 or greater than 990
+    # @exception Ma ERROR if the n parameter isn't an integer or is less than 0 or greater than 990
     # @return factorial of number n
 
     @staticmethod
@@ -248,6 +248,16 @@ class MerionesLib:
         return round(y, 13)
 
     ##
+    # Method calculates tan of x
+    #
+    # @param x number of which tan will be calculated
+    # @return tan of x
+
+    @staticmethod
+    def tan(x):
+        return MerionesLib.sin(x)/MerionesLib.cos(x)
+
+    ##
     # Method calculates exp of x using Taylor series
     #
     # @param x number of which exp will be calculated
@@ -261,11 +271,11 @@ class MerionesLib:
         return round(y, 13)
 
     ##
-    # Method calculated gamma function of x using Lanczos approximation (Work in Progress)
+    # Method calculated gamma function of x using Lanczos approximation (Not working)
     #
     # @param x number of which the gamma function will be calculated
     # @return gamma of x
-        
+    
     gamma_p = [676.5203681218851
         ,-1259.1392167224028
         ,771.32342877765313
@@ -276,6 +286,7 @@ class MerionesLib:
         ,1.5056327351493116e-7
     ]
 
+    #TODO: fix double overflow error
     def gamma(x):
         pi = 3.1415926535898
         if x < 0.5:
