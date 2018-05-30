@@ -258,7 +258,7 @@ class MerionesLib:
 
     @staticmethod
     def tan(x):
-        return MerionesLib.sin(x)/MerionesLib.cos(x)
+        return round(MerionesLib.sin(x)/MerionesLib.cos(x), 13)
 
     ##
     # Method calculates exp of x using Taylor series
@@ -501,28 +501,28 @@ class MerionesLib:
 
         # concatenate numbers that are writen in format like "126e+145"
         for index, item in enumerate(result):
-            if "e" in item and item != "e":
+            if item[-1]=="e" and item != "e":
                 result[index:index + 3] = [''.join(result[index:index + 3])]
 
         # check the parsed expression for syntactic errors
         for index, item in enumerate(result):
             # check for operators on the begining or end of expression
             if item in operators:
-                if index == 0 and item != "ln" and item != "√":
+                if index == 0 and item not in ["ln", "sin", "cos", "tan", "exp", "√"]:
                     raise ValueError("Syn Error")
                 if index == len(result) - 1 and item != "!":
                     raise ValueError("Syn Error")
 
             # check for forbidden double operators
             if item in operators and result[index - 1] in operators:
-                if index > 0 and result[index - 1] != "!" and item != "ln" and item != "√":
+                if index > 0 and result[index - 1] != "!" and item not in ["ln", "sin", "cos", "tan", "exp", "√"]:
                     raise ValueError("Syn Error")
 
             # check if there is an operator after ! and before ln
             if item == "!" and index < len(result) - 1 and result[index + 1] not in operators:
                 raise ValueError("Syn Error")
 
-            if item == "ln" and index > 0 and result[index - 1] not in operators:
+            if item in ["ln", "sin", "cos", "tan", "exp"] and index > 0 and result[index - 1] not in operators:
                 raise ValueError("Syn Error")
 
             if item not in operators and item not in ['pi', 'e']:
@@ -567,10 +567,10 @@ class MerionesLib:
 
     @staticmethod
     def solve_expression(expr):
-        operators = ["ln", "!", "√", "^", "pow", "÷", "x", "*", "/", "+", "-"]
+        operators = ["ln", "!", "√", "^", "pow", "÷", "*", "/", "+", "-", "sin", "cos", "tan", "exp"]
         expression = MerionesLib.parse_expression(expr, operators)
 
-        operator_precedence = [["ln"], ["!"], ["^", "pow", "√"], ["÷", "x", "*", "/"], ["+", "-"]]
+        operator_precedence = [["ln", "sin", "cos", "tan", "exp"], ["!"], ["^", "pow", "√"], ["÷", "*", "/"], ["+", "-"]]
         for operator in operator_precedence:
             index = 0
             while index < len(expression):
@@ -588,7 +588,7 @@ class MerionesLib:
                         expression[index - 1:index + 2] = result
                         index -= 1
 
-                    elif item == "*" or item == "x":
+                    elif item == "*":
                         result = [str(MerionesLib.mul(MerionesLib.str_to_num(expression[index - 1]),
                                                       MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index - 1:index + 2] = result
@@ -623,6 +623,22 @@ class MerionesLib:
 
                     elif item == "ln":
                         result = [str(MerionesLib.ln(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "sin":
+                        result = [str(MerionesLib.sin(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "cos":
+                        result = [str(MerionesLib.cos(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "tan":
+                        result = [str(MerionesLib.tan(MerionesLib.str_to_num(expression[index + 1])))]
+                        expression[index:index + 2] = result
+
+                    elif item == "exp":
+                        result = [str(MerionesLib.exp(MerionesLib.str_to_num(expression[index + 1])))]
                         expression[index:index + 2] = result
 
                 index += 1
