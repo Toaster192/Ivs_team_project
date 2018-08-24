@@ -1,3 +1,12 @@
+<div align="center">
+    <h1>Meriones Calculator</h1>
+    <p>BUT FIT - IVS Project 2</p>
+    <p>
+    <img src="screenshot.png">
+    <br>
+    </p>
+</div>
+
 # IVS Project 2
 
 A simple calculator with GUI, documentation, manual, it's own math library and installer.
@@ -13,9 +22,13 @@ The project assignment (in czech) can be found [here](http://ivs.fit.vutbr.cz/pr
 
 ## Getting Started
 
-These instructions will get you a copy of the whole project for you to run and
-edit. If you'd prefer to just download the installer (debian package) click
-[here](#install-from-package)
+If you don't intend to edit or view the code just install the calculator
+[here](#install-from-package).
+Otherwise clone the directory
+
+```
+git clone https://github.com/Toaster192/Ivs_team_project.git
+```
 
 ## Install from package
 
@@ -41,3 +54,19 @@ Then to run the program use the command
 ```
 meriones-calculator
 ```
+
+## Built With
+
+* [Python](https://www.python.org/) - The programming language used
+* [PyQt](https://wiki.python.org/moin/PyQt) - Used for the GUI
+
+## Authors
+
+* **Ondřej Kinšt** - [Toaster192](https://github.com/Toaster192)
+* **Jaromír Wysoglad** - [vyzigold](https://github.com/vyzigold)
+* **Silvie Chlupová** - [schlupov](https://github.com/schlupov)
+* **Ivana Saranová** - [isaranova](https://github.com/isaranova)
+
+## License
+
+This project is licensed under the GNU GPL v.3 License.
